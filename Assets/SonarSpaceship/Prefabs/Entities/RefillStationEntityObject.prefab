@@ -124,6 +124,7 @@ GameObject:
   - component: {fileID: 1707399744906184552}
   - component: {fileID: 1707399744906184567}
   - component: {fileID: 1707399744906184566}
+  - component: {fileID: 5177595568041855156}
   m_Layer: 0
   m_Name: RefillStationEntityObject
   m_TagString: Untagged
@@ -214,7 +215,7 @@ MonoBehaviour:
   m_ShadowGroup: 0
   m_HasRenderer: 1
   m_UseRendererSilhouette: 1
-  m_CastsShadows: 1
+  m_CastsShadows: 0
   m_SelfShadows: 1
   m_ApplyToSortingLayers: 00000000
   m_ShapePath:
@@ -224,7 +225,19 @@ MonoBehaviour:
   - {x: -0.5, y: 0.5, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 47084
+  m_InstanceId: 24712
+--- !u!114 &5177595568041855156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1707399744906184565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29b393d5affaa93409db15ebaea5ed4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5955459044641213710
 GameObject:
   m_ObjectHideFlags: 0

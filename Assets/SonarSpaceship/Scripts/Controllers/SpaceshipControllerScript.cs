@@ -311,6 +311,7 @@ namespace SonarSpaceship.Controllers
             }
         }
 
+#if UNITY_EDITOR
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.cyan;
@@ -320,5 +321,6 @@ namespace SonarSpaceship.Controllers
             Gizmos.DrawLine(position, position + (Quaternion.AngleAxis(emssAngle * 0.5f, Vector3.forward) * looking_at * emssDistance));
             Gizmos.DrawLine(position, position + (Quaternion.AngleAxis(emssAngle * -0.5f, Vector3.forward) * looking_at * emssDistance));
         }
+#endif
     }
 }

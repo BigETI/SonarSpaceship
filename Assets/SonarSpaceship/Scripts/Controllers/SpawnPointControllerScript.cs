@@ -6,11 +6,6 @@ namespace SonarSpaceship.Controllers
 {
     public class SpawnPointControllerScript : MonoBehaviour, ISpawnPointController
     {
-#if UNITY_EDITOR
-        [SerializeField]
-        private float gizmoRadius = 1.0f;
-#endif
-
         [SerializeField]
         private UnityEvent onPlayerSpawned = default;
 
@@ -20,14 +15,6 @@ namespace SonarSpaceship.Controllers
         [SerializeField]
         private UnityEvent onLevelFinished = default;
 
-#if UNITY_EDITOR
-        public float GizmoRadius
-        {
-            get => gizmoRadius;
-            set => gizmoRadius = Mathf.Max(value, 0.0f);
-        }
-#endif
-
         public PlayerControllerScript PlayerController { get; private set; }
 
         public event PlayerSpawnedDelegate OnPlayerSpawned;
@@ -35,10 +22,6 @@ namespace SonarSpaceship.Controllers
         public event ContainerDeliveredDelegate OnContainerDelivered;
 
         public event LevelFinishedDelegate OnLevelFinished;
-
-#if UNITY_EDITOR
-        private void OnValidate() => gizmoRadius = Mathf.Max(gizmoRadius, 0.0f);
-#endif
 
         public void SpawnPlayer()
         {
@@ -89,15 +72,12 @@ namespace SonarSpaceship.Controllers
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.green;
-            Vector3 position = transform.position;
-            Quaternion rotation = Quaternion.AngleAxis(transform.rotation.eulerAngles.z, Vector3.forward);
-            Vector3 top_position = position + (rotation * Vector3.up * 0.5f);
-            Gizmos.DrawWireSphere(position, gizmoRadius);
-            Gizmos.DrawWireSphere(position, gizmoRadius * 0.75f);
-            Gizmos.color = Color.red;
-            Gizmos.DrawLine(position - (rotation * Vector3.up * 0.5f), top_position);
-            Gizmos.DrawLine(top_position, position - (rotation * Vector3.left * 0.25f));
-            Gizmos.DrawLine(top_position, position - (rotation * Vector3.right * 0.25f));
+            Matrix4x4 old_matrix = Gizmos.matrix;
+            Gizmos.matrix = transform.localToWorldMatrix;
+            Gizmos.DrawWireCube(Vector3.zero, Vector3.one * 2.0f);
+            Gizmos.DrawWireCube(Vector3.zero, Vector3.one * 1.5f);
+            EntityGizmos.DrawArrow(Vector3.zero, 1.5f);
+            Gizmos.matrix = old_matrix;
         }
 #endif
     }
