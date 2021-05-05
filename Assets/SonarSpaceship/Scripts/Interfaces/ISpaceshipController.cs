@@ -1,4 +1,5 @@
 ﻿using SonarSpaceship.Controllers;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace SonarSpaceship
@@ -15,6 +16,8 @@ namespace SonarSpaceship
 
         float Weight { get; set; }
 
+        float MaximalFuelCapacity { get; set; }
+
         float EMSSSpeed { get; set; }
 
         float EMSSDistance { get; set; }
@@ -26,6 +29,10 @@ namespace SonarSpaceship
         Vector2 Movement { get; set; }
 
         Vector2 LookAt { get; set; }
+
+        float Fuel { get; set; }
+
+        IReadOnlyCollection<RefillStationControllerScript> DockedRefillStationControllerss { get; }
 
         ContainerControllerScript AttachedContainerController { get; }
 

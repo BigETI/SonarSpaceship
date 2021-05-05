@@ -314,7 +314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd25f99fb5153d34a94193e35baa6549, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gizmoRadius: 1
+  startingFuel: 30
   onPlayerSpawned:
     m_PersistentCalls:
       m_Calls: []

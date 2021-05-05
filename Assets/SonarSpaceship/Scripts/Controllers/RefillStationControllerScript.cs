@@ -4,7 +4,29 @@ namespace SonarSpaceship.Controllers
 {
     public class RefillStationControllerScript : MonoBehaviour, IRefillStationController
     {
-        // TODO: Implement refill station controller script class
+        [SerializeField]
+        private float fuelCapacity = 30.0f;
+
+        [SerializeField]
+        private float pumpingFuelPerSecond = 10.0f;
+
+        public float FuelCapacity
+        {
+            get => fuelCapacity;
+            set => fuelCapacity = Mathf.Max(value, 0.0f);
+        }
+
+        public float PumpingFuelPerSecond
+        {
+            get => pumpingFuelPerSecond;
+            set => pumpingFuelPerSecond = Mathf.Max(value, 0.0f);
+        }
+
+        private void OnValidate()
+        {
+            fuelCapacity = Mathf.Max(fuelCapacity, 0.0f);
+            pumpingFuelPerSecond = Mathf.Max(pumpingFuelPerSecond, 0.0f);
+        }
 
 #if UNITY_EDITOR
         private void OnDrawGizmos()
