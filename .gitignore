@@ -7,6 +7,7 @@ Logs/
 obj/
 Temp/
 UnityGenerated/
+UserSettings/
 
 # ===================================== #
 # Visual Studio / MonoDevelop generated #
@@ -20,6 +21,7 @@ UnityGenerated/
 *.unityproj
 *.user
 *.userprefs
+.vsconfig
 .vs/
 ExportedObj/
 

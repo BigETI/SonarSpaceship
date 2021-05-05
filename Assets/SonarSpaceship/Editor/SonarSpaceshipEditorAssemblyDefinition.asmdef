@@ -1,0 +1,19 @@
+{
+    "name": "SonarSpaceshipEditorAssemblyDefinition",
+    "rootNamespace": "",
+    "references": [
+        "GUID:ada58f7746f69cd47b311aa1972cf0da",
+        "GUID:fcb100b7b66187e469de3637a27ae794"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
