@@ -24,6 +24,9 @@ namespace SonarSpaceship.Controllers
         private float weight = 1.0f;
 
         [SerializeField]
+        private float maximalFuelCapacity = 30.0f;
+
+        [SerializeField]
         private float emssSpeed = 10.0f;
 
         [SerializeField]
@@ -52,6 +55,12 @@ namespace SonarSpaceship.Controllers
         private Vector2 lookAt = Vector2.up;
 
         private Vector2 lookingAt = Vector2.up;
+
+        private float fuel = float.MaxValue;
+
+        private Dictionary<int, RefillStationControllerScript> dockedRefillStationControllers = new Dictionary<int, RefillStationControllerScript>();
+
+        private HashSet<int> removeDockedRefillStationKeys = new HashSet<int>();
 
         private List<(PingableControllerScript, float)> pinging = new List<(PingableControllerScript, float)>();
 
@@ -83,6 +92,12 @@ namespace SonarSpaceship.Controllers
         {
             get => weight;
             set => weight = Mathf.Max(value, float.Epsilon);
+        }
+
+        public float MaximalFuelCapacity
+        {
+            get => maximalFuelCapacity;
+            set => maximalFuelCapacity = Mathf.Max(value, 0.0f);
         }
 
         public float EMSSSpeed
@@ -127,6 +142,14 @@ namespace SonarSpaceship.Controllers
             }
         }
 
+        public float Fuel
+        {
+            get => fuel;
+            set => fuel = Mathf.Min(value, maximalFuelCapacity);
+        }
+
+        public IReadOnlyCollection<RefillStationControllerScript> DockedRefillStationControllerss => dockedRefillStationControllers.Values;
+
         public ContainerControllerScript AttachedContainerController { get; private set; }
 
         public float AttachmentCooldownTime { get; private set; }
@@ -142,7 +165,7 @@ namespace SonarSpaceship.Controllers
         public event ContainerAttachedDelegate OnContainerAttached;
 
         public event ContainerDetachedDelegate OnContainerDetached;
-        
+
         public void Ping()
         {
             PingableControllerScript[] pingable_controllers = FindObjectsOfType<PingableControllerScript>();
@@ -205,6 +228,7 @@ namespace SonarSpaceship.Controllers
             maximalSpeed = Mathf.Max(maximalSpeed, 0.0f);
             inertiaDampenerForce = Mathf.Max(inertiaDampenerForce, 0.0f);
             weight = Mathf.Max(weight, float.Epsilon);
+            maximalFuelCapacity = Mathf.Max(maximalFuelCapacity, 0.0f);
             emssSpeed = Mathf.Max(emssSpeed, 0.0f);
             emssDistance = Mathf.Max(emssDistance, 0.0f);
             emssAngle = Mathf.Repeat(emssAngle, 360.0f - float.Epsilon);
@@ -225,19 +249,85 @@ namespace SonarSpaceship.Controllers
 
         private void Update()
         {
+            if (fuel < maximalFuelCapacity)
+            {
+                float remaining_fuel_capacity = maximalFuelCapacity - fuel;
+                foreach (KeyValuePair<int, RefillStationControllerScript> docked_refill_station_controller in dockedRefillStationControllers)
+                {
+                    if (docked_refill_station_controller.Value)
+                    {
+                        float pumping_fuel = docked_refill_station_controller.Value.PumpingFuelPerSecond * Time.deltaTime;
+                        if (pumping_fuel >= remaining_fuel_capacity)
+                        {
+                            pumping_fuel = remaining_fuel_capacity;
+                        }
+                        if (docked_refill_station_controller.Value.FuelCapacity > pumping_fuel)
+                        {
+                            docked_refill_station_controller.Value.FuelCapacity -= pumping_fuel;
+                        }
+                        else
+                        {
+                            pumping_fuel = docked_refill_station_controller.Value.FuelCapacity;
+                            docked_refill_station_controller.Value.FuelCapacity = 0.0f;
+                        }
+                        Fuel += pumping_fuel;
+                        if (fuel >= maximalFuelCapacity)
+                        {
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        removeDockedRefillStationKeys.Add(docked_refill_station_controller.Key);
+                    }
+                }
+                foreach (int remove_docked_refill_station_keys in removeDockedRefillStationKeys)
+                {
+                    dockedRefillStationControllers.Remove(remove_docked_refill_station_keys);
+                }
+                removeDockedRefillStationKeys.Clear();
+            }
             if (SpaceshipRigidBody)
             {
                 lookingAt = Vector2.Lerp(lookingAt, lookAt, lookAtSmoothing).normalized;
                 SpaceshipRigidBody.SetRotation(Vector2.SignedAngle(Vector2.up, lookingAt));
                 Vector2 velocity = SpaceshipRigidBody.velocity;
-                if (movement.sqrMagnitude > float.Epsilon)
+                if (fuel > 0.0f)
                 {
-                    velocity = ClampVelocity(velocity + movement * (maximalAccelerationForce / weight) * Time.deltaTime);
-                }
-                else if (velocity.sqrMagnitude > float.Epsilon)
-                {
-                    Vector2 subtract_velocity = velocity.normalized * (inertiaDampenerForce / weight) * Time.deltaTime;
-                    velocity = (subtract_velocity.sqrMagnitude < velocity.sqrMagnitude) ? (velocity - subtract_velocity) : Vector2.zero;
+                    float movement_magnitude = movement.magnitude;
+                    if (movement_magnitude > float.Epsilon)
+                    {
+                        float required_fuel = movement_magnitude * Time.deltaTime;
+                        float thrust = 1.0f;
+                        if (fuel < required_fuel)
+                        {
+                            thrust = fuel / required_fuel;
+                            fuel = 0.0f;
+                        }
+                        else
+                        {
+                            fuel -= required_fuel;
+                        }
+                        velocity = ClampVelocity(velocity + movement * thrust * (maximalAccelerationForce / weight) * Time.deltaTime);
+                    }
+                    else if (velocity.sqrMagnitude > float.Epsilon)
+                    {
+                        Vector2 subtract_velocity = velocity.normalized * (inertiaDampenerForce / weight) * Time.deltaTime;
+                        float subtract_velocity_magnitude = subtract_velocity.magnitude;
+                        float velocity_magnitude = velocity.magnitude;
+                        float required_fuel = (subtract_velocity_magnitude < velocity_magnitude) ? (inertiaDampenerForce * Time.deltaTime / maximalAccelerationForce) : ((inertiaDampenerForce * Time.deltaTime / maximalAccelerationForce) * velocity_magnitude / subtract_velocity_magnitude);
+                        float thrust = 1.0f;
+                        if (fuel < required_fuel)
+                        {
+                            thrust = fuel / required_fuel;
+                            fuel = 0.0f;
+                        }
+                        else
+                        {
+                            fuel -= required_fuel;
+                        }
+                        velocity = (subtract_velocity_magnitude < velocity_magnitude) ? ((velocity - subtract_velocity) * thrust) : Vector2.zero;
+                    }
                 }
                 SpaceshipRigidBody.velocity = velocity;
             }
@@ -274,6 +364,7 @@ namespace SonarSpaceship.Controllers
             {
                 Vector2 velocity_sum = Vector2.zero;
                 uint collision_count = 0U;
+                float loosing_fuel_sum = 0.0f;
                 for (int contact_point_index = 0; contact_point_index < collision.contactCount; contact_point_index++)
                 {
                     ContactPoint2D contact_point = collision.GetContact(contact_point_index);
@@ -281,6 +372,10 @@ namespace SonarSpaceship.Controllers
                     {
                         velocity_sum -= Vector2.Reflect(contact_point.relativeVelocity, contact_point.normal) * collidable_controller.Bounciness;
                         ++collision_count;
+                        if (collidable_controller.MaximalDamage > float.Epsilon)
+                        {
+                            loosing_fuel_sum += collidable_controller.MaximalDamage * (collidable_controller.IsExplosive ? 1.0f : (contact_point.relativeVelocity.magnitude / maximalSpeed));
+                        }
                         collidable_controller.Collide();
                     }
                     if ((AttachmentCooldownTime <= 0.0f) && !AttachedContainerController && contact_point.collider.GetComponentInParent<ContainerControllerScript>() is ContainerControllerScript container_controller)
@@ -298,16 +393,33 @@ namespace SonarSpaceship.Controllers
                 if (collision_count > 0U)
                 {
                     SpaceshipRigidBody.velocity = ClampVelocity(velocity_sum / collision_count);
+                    Fuel -= loosing_fuel_sum / collision_count;
                 }
             }
         }
         private void OnTriggerEnter2D(Collider2D collider)
         {
+            if (collider.GetComponentInParent<RefillStationControllerScript>() is RefillStationControllerScript refill_station_controller)
+            {
+                int id = refill_station_controller.gameObject.GetInstanceID();
+                if (!dockedRefillStationControllers.ContainsKey(id))
+                {
+                    dockedRefillStationControllers.Add(id, refill_station_controller);
+                }
+            }
             if (AttachedContainerController && collider.GetComponentInParent<SpawnPointControllerScript>() is SpawnPointControllerScript spawn_point_controller)
             {
                 ContainerControllerScript attached_container_controller = AttachedContainerController;
                 DetachContainer();
                 spawn_point_controller.CollectContainer(attached_container_controller);
+            }
+        }
+
+        private void OnTriggerExit2D(Collider2D collider)
+        {
+            if (collider.GetComponentInParent<RefillStationControllerScript>() is RefillStationControllerScript refill_station_controller)
+            {
+                dockedRefillStationControllers.Remove(refill_station_controller.gameObject.GetInstanceID());
             }
         }
 

@@ -7,6 +7,9 @@ namespace SonarSpaceship.Controllers
     public class SpawnPointControllerScript : MonoBehaviour, ISpawnPointController
     {
         [SerializeField]
+        private float startingFuel = 30.0f;
+
+        [SerializeField]
         private UnityEvent onPlayerSpawned = default;
 
         [SerializeField]
@@ -14,6 +17,12 @@ namespace SonarSpaceship.Controllers
 
         [SerializeField]
         private UnityEvent onLevelFinished = default;
+
+        public float StartingFuel
+        {
+            get => startingFuel;
+            set => startingFuel = Mathf.Max(value, 0.0f);
+        }
 
         public PlayerControllerScript PlayerController { get; private set; }
 
@@ -29,6 +38,7 @@ namespace SonarSpaceship.Controllers
             {
                 PlayerController.transform.position = transform.position;
                 PlayerController.transform.rotation = Quaternion.AngleAxis(transform.rotation.eulerAngles.z, Vector3.forward);
+                spaceship_controller.Fuel = startingFuel;
                 if (onPlayerSpawned != null)
                 {
                     onPlayerSpawned.Invoke();
@@ -61,6 +71,8 @@ namespace SonarSpaceship.Controllers
             }
             Destroy(containerController.gameObject);
         }
+
+        private void OnValidate() => startingFuel = Mathf.Max(startingFuel, 0.0f);
 
         private void Start()
         {

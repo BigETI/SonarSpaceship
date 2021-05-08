@@ -151,6 +151,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65ca267f237c12f4092c3d1b25da3531, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maximalDamage: 30
+  isExplosive: 1
   bounciness: 1
   onCollided:
     m_PersistentCalls:
@@ -165,6 +167,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Collide
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4078944747102468895}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!95 &8157889347921788491
@@ -297,7 +311,7 @@ MonoBehaviour:
   - {x: -0.5, y: 0.5, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 40114
+  m_InstanceId: 30054
 --- !u!1 &5079404658211952642
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,10 +6,28 @@ namespace SonarSpaceship.Controllers
     public class CollidableControllerScript : MonoBehaviour, ICollidableController
     {
         [SerializeField]
+        private float maximalDamage = 15.0f;
+
+        [SerializeField]
+        private bool isExplosive;
+
+        [SerializeField]
         private float bounciness = 1.0f;
 
         [SerializeField]
         private UnityEvent onCollided = default;
+
+        public float MaximalDamage
+        {
+            get => maximalDamage;
+            set => maximalDamage = Mathf.Max(value, 0.0f);
+        }
+
+        public bool IsExplosive
+        {
+            get => isExplosive;
+            set => isExplosive = value;
+        }
 
         public float Bounciness
         {
@@ -28,7 +46,11 @@ namespace SonarSpaceship.Controllers
 
         public event CollidedDelegate OnCollided;
 
-        private void OnValidate() => bounciness = Mathf.Max(bounciness, 0.0f);
+        private void OnValidate()
+        {
+            bounciness = Mathf.Max(bounciness, 0.0f);
+            maximalDamage = Mathf.Max(maximalDamage, 0.0f);
+        }
 
         private void OnCollisionEnter2D(Collision2D collision) => Collide();
 

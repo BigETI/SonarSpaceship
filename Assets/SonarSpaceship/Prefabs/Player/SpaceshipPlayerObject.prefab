@@ -219,6 +219,7 @@ MonoBehaviour:
   onContainerDetached:
     m_PersistentCalls:
       m_Calls: []
+  fuel: 30
 --- !u!114 &742195787057101684
 MonoBehaviour:
   m_ObjectHideFlags: 0

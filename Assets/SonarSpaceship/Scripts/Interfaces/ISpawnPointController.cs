@@ -4,6 +4,8 @@ namespace SonarSpaceship
 {
     public interface ISpawnPointController : IBehaviour
     {
+        float StartingFuel { get; set; }
+
         PlayerControllerScript PlayerController { get; }
 
         event PlayerSpawnedDelegate OnPlayerSpawned;
