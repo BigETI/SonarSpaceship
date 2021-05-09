@@ -32,6 +32,10 @@ namespace SonarSpaceship
 
         float Fuel { get; set; }
 
+        bool IsAlive { get; }
+
+        float ActualWeight { get; }
+
         IReadOnlyCollection<RefillStationControllerScript> DockedRefillStationControllerss { get; }
 
         ContainerControllerScript AttachedContainerController { get; }
@@ -48,10 +52,15 @@ namespace SonarSpaceship
 
         event ContainerDetachedDelegate OnContainerDetached;
 
+        event DiedDelegate OnDied;
+
         void Ping();
 
         void DetachContainer();
 
         void InvokeSpawnedEvent();
+
+        void ShowLevelSelectionMenu();
+
     }
 }

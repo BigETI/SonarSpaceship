@@ -6,6 +6,21 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/SonarSpaceship/Scenes/Menus/IntroMenuScene.unity
+    guid: 75a9b3d7681283f49876f6d9db83c252
+  - enabled: 1
+    path: Assets/SonarSpaceship/Scenes/Menus/MainMenuScene.unity
+    guid: 298a9feaf926a1a408b222b639c1b767
+  - enabled: 1
+    path: Assets/SonarSpaceship/Scenes/Menus/CreditsMenuScene.unity
+    guid: 30e90f15fc1263c4eb5739029a2433d7
+  - enabled: 1
+    path: Assets/SonarSpaceship/Scenes/Menus/LevelSelectionMenuScene.unity
+    guid: a9346460742a8e44e9c772147a37c42c
+  - enabled: 1
     path: Assets/SonarSpaceship/Scenes/Games/GameScene.unity
     guid: d1c3109bdb54ad54c8a2b2838528e640
+  - enabled: 1
+    path: Assets/SonarSpaceship/Scenes/Levels/Tests/TestLevelScene.unity
+    guid: b9d79bac453b28b4d9d1180e7e36bbbe
   m_configObjects: {}

@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.Events;
+using UnitySceneLoaderManager;
 
 namespace SonarSpaceship.Controllers
 {
@@ -61,16 +62,17 @@ namespace SonarSpaceship.Controllers
             OnContainerDelivered?.Invoke(containerController);
             if (FindObjectsOfType<ContainerControllerScript>().Length <= 1)
             {
+                GameManager.FinishCurrentLevel();
                 if (onLevelFinished != null)
                 {
                     onLevelFinished.Invoke();
                 }
                 OnLevelFinished?.Invoke();
-                Debug.Log("Finished!");
-                // TODO: Notify game manager that level has been finished.
             }
             Destroy(containerController.gameObject);
         }
+
+        public void ShowLevelSelectionMenu() => SceneLoaderManager.LoadScenes("LevelSelectionMenuScene");
 
         private void OnValidate() => startingFuel = Mathf.Max(startingFuel, 0.0f);
 

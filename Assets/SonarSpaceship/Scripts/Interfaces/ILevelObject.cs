@@ -1,4 +1,6 @@
-﻿using UnityTranslator.Objects;
+﻿using SonarSpaceship.Objects;
+using System.Collections.Generic;
+using UnityTranslator.Objects;
 
 namespace SonarSpaceship
 {
@@ -8,6 +10,6 @@ namespace SonarSpaceship
 
         string ScenePath { get; }
 
-        string LevelName { get; }
+        IReadOnlyCollection<LevelObjectScript> RequiredLevels { get; }
     }
 }

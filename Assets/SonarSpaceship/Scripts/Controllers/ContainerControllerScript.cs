@@ -6,10 +6,19 @@ namespace SonarSpaceship.Controllers
     public class ContainerControllerScript : MonoBehaviour, IContainerController
     {
         [SerializeField]
+        private float weight = 1.0f;
+
+        [SerializeField]
         private UnityEvent onAttached = default;
 
         [SerializeField]
         private UnityEvent onDetached = default;
+
+        public float Weight
+        {
+            get => weight;
+            set => weight = Mathf.Max(value, 0.0f);
+        }
 
         public event AttachedDelegate OnAttached;
 
@@ -34,6 +43,8 @@ namespace SonarSpaceship.Controllers
         }
 
 #if UNITY_EDITOR
+        private void OnValidate() => weight = Mathf.Max(weight, 0.0f);
+
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.cyan;
