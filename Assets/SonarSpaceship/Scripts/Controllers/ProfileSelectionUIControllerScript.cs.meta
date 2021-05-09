@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: b0c3bc11d42580847bbd0e656b449cbe
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - deleteProfileTitleStringTranslation: {fileID: 11400000, guid: c041e1fe3eac0294f99a9aa4bf35ea23, type: 2}
+  - deleteProfileMessageStringTranslation: {fileID: 11400000, guid: 8595d69e5502dd34480c3b8842ae3895, type: 2}
+  - nameText: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
