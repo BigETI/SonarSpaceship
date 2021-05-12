@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: CollumLevel
   m_EditorClassIdentifier: 
   levelNameStringTranslation: {fileID: 11400000, guid: 56bff6d3a65d0b545bcf365e82c90345, type: 2}
-  scenePath: 
+  scenePath: Assets/SonarSpaceship/Scenes/Levels/Anser/CollumLevelScene.unity
   requiredLevels:
   - {fileID: 11400000, guid: af83f3ad5181e0e44823c9473ecffce9, type: 2}

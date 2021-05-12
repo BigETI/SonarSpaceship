@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: VentriLevel
   m_EditorClassIdentifier: 
   levelNameStringTranslation: {fileID: 11400000, guid: 0effc7135e443a8478c358946b34ccd9, type: 2}
-  scenePath: 
+  scenePath: Assets/SonarSpaceship/Scenes/Levels/Anser/VentriLevelScene.unity
   requiredLevels:
   - {fileID: 11400000, guid: bc161e2f042b6bf4e9fcb9b352b814ac, type: 2}

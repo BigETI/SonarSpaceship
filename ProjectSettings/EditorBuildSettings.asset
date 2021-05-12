@@ -23,4 +23,22 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/SonarSpaceship/Scenes/Levels/Tests/TestLevelScene.unity
     guid: b9d79bac453b28b4d9d1180e7e36bbbe
+  - enabled: 1
+    path: Assets/SonarSpaceship/Scenes/Levels/Anser/RostroLevelScene.unity
+    guid: 09bd24ec5b31766488ef2448ea1284d3
+  - enabled: 1
+    path: Assets/SonarSpaceship/Scenes/Levels/Anser/CollumLevelScene.unity
+    guid: b910b5159c8f1514cac0cd93a351b6c7
+  - enabled: 1
+    path: Assets/SonarSpaceship/Scenes/Levels/Anser/VentriLevelScene.unity
+    guid: 66daab05b000aaf4b8abffd1f6c811aa
+  - enabled: 1
+    path: Assets/SonarSpaceship/Scenes/Levels/Anser/PedibusLevelScene.unity
+    guid: 64e8bf8ea7b36a040a79bdebb7e9877f
+  - enabled: 1
+    path: Assets/SonarSpaceship/Scenes/Levels/Anser/CaudaLevelScene.unity
+    guid: 6c8abdf9650a39d4f884aaa903ca5e07
+  - enabled: 1
+    path: Assets/SonarSpaceship/Scenes/Levels/Anser/BrunneisLevelScene.unity
+    guid: 14c57d607fcf222408790fa84c3f3256
   m_configObjects: {}

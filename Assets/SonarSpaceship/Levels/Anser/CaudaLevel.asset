@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: CaudaLevel
   m_EditorClassIdentifier: 
   levelNameStringTranslation: {fileID: 11400000, guid: ed95014f64eaecd40a11d7785bdbe817, type: 2}
-  scenePath: 
+  scenePath: Assets/SonarSpaceship/Scenes/Levels/Anser/CaudaLevelScene.unity
   requiredLevels:
   - {fileID: 11400000, guid: f8bd0dee25f63b74e9edec434df8362a, type: 2}
