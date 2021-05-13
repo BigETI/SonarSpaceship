@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: SomniumLevel
   m_EditorClassIdentifier: 
   levelNameStringTranslation: {fileID: 11400000, guid: f56dbdeef80f69b47b6131610cd95fb7, type: 2}
-  scenePath: 
+  scenePath: Assets/SonarSpaceship/Scenes/Levels/Venandi/SomniumLevelScene.unity
   requiredLevels:
   - {fileID: 11400000, guid: 18db9705897b12c4bacaf52076ac9293, type: 2}

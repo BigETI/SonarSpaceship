@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: VenariLevel
   m_EditorClassIdentifier: 
   levelNameStringTranslation: {fileID: 11400000, guid: e575fb8c231c6f949b52717c5679a804, type: 2}
-  scenePath: 
+  scenePath: Assets/SonarSpaceship/Scenes/Levels/Venandi/VenariLevelScene.unity
   requiredLevels:
   - {fileID: 11400000, guid: eee00319b3683cd41bfd55fc8c8aee5e, type: 2}

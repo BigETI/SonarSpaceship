@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: MortemLevel
   m_EditorClassIdentifier: 
   levelNameStringTranslation: {fileID: 11400000, guid: 5566f7fa33c3adb43bce5d1fcb1f0dc0, type: 2}
-  scenePath: 
+  scenePath: Assets/SonarSpaceship/Scenes/Levels/Venandi/MortemLevelScene.unity
   requiredLevels:
   - {fileID: 11400000, guid: e5f5aeb59ca1eef4eb5e12790c59a0af, type: 2}

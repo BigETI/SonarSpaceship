@@ -8,6 +8,12 @@ namespace SonarSpaceship.Controllers
     [RequireComponent(typeof(Rigidbody2D))]
     public class SpaceshipControllerScript : MonoBehaviour, ISpaceshipController
     {
+        private readonly Dictionary<int, RefillStationControllerScript> dockedRefillStationControllers = new Dictionary<int, RefillStationControllerScript>();
+
+        private readonly HashSet<int> removeDockedRefillStationKeys = new HashSet<int>();
+
+        private readonly List<IPing> pings = new List<IPing>();
+
         [SerializeField]
         [Range(0.0f, 1.0f)]
         private float lookAtSmoothing = 0.125f;
@@ -61,12 +67,6 @@ namespace SonarSpaceship.Controllers
         private Vector2 lookingAt = Vector2.up;
 
         private float fuel = float.MaxValue;
-
-        private Dictionary<int, RefillStationControllerScript> dockedRefillStationControllers = new Dictionary<int, RefillStationControllerScript>();
-
-        private HashSet<int> removeDockedRefillStationKeys = new HashSet<int>();
-
-        private List<(PingableControllerScript, float)> pinging = new List<(PingableControllerScript, float)>();
 
         public float LookAtSmoothing
         {
@@ -193,19 +193,14 @@ namespace SonarSpaceship.Controllers
             if (IsAlive)
             {
                 PingableControllerScript[] pingable_controllers = FindObjectsOfType<PingableControllerScript>();
-                Vector3 position = transform.position;
-                float half_emss_angle = emssAngle * 0.5f;
+                Vector3 world_position = transform.position;
+                Vector2 position = new Vector2(world_position.x, world_position.y);
                 foreach (PingableControllerScript pingable_controller in pingable_controllers)
                 {
-                    Vector3 delta = pingable_controller.transform.position - position;
-                    if (delta.sqrMagnitude > float.Epsilon)
+                    Vector3 pingable_controller_world_position = pingable_controller.transform.position;
+                    if ((new Vector2(pingable_controller_world_position.x, pingable_controller_world_position.y) - position).sqrMagnitude > float.Epsilon)
                     {
-                        float distance = delta.magnitude;
-                        Vector3 normal = delta / distance;
-                        if ((distance <= emssDistance) && (Vector3.Angle(new Vector3(lookingAt.x, lookingAt.y, 0.0f), normal) <= half_emss_angle))
-                        {
-                            pinging.Add((pingable_controller, distance / emssSpeed));
-                        }
+                        pings.Add(new Ping(pingable_controller, this, position, lookingAt, emssSpeed, emssDistance, emssAngle));
                     }
                     else
                     {
@@ -361,25 +356,13 @@ namespace SonarSpaceship.Controllers
                     }
                     SpaceshipRigidBody.velocity = velocity;
                 }
-                for (int pinging_index = pinging.Count - 1; pinging_index >= 0; pinging_index--)
+                for (int ping_index = pings.Count - 1; ping_index >= 0; ping_index--)
                 {
-                    (PingableControllerScript, float) pingable = pinging[pinging_index];
-                    if (pingable.Item1)
+                    IPing ping = pings[ping_index];
+                    EPingResult ping_result = ping.ProcessPing(Time.deltaTime);
+                    if (ping_result != EPingResult.IsProcessing)
                     {
-                        float current_time = pingable.Item2 - Time.deltaTime;
-                        if (current_time > 0.0f)
-                        {
-                            pinging[pinging_index] = (pingable.Item1, current_time);
-                        }
-                        else
-                        {
-                            pinging.RemoveAt(pinging_index);
-                            pingable.Item1.ReceivePing(this);
-                        }
-                    }
-                    else
-                    {
-                        pinging.RemoveAt(pinging_index);
+                        pings.RemoveAt(ping_index);
                     }
                 }
                 if (AttachmentCooldownTime > 0.0f)

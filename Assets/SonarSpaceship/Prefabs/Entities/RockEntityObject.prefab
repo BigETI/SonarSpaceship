@@ -190,7 +190,7 @@ MonoBehaviour:
   - {x: -0.5, y: 0.5, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 40174
+  m_InstanceId: 81364
 --- !u!1 &3354831618154531220
 GameObject:
   m_ObjectHideFlags: 0
@@ -263,6 +263,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65ca267f237c12f4092c3d1b25da3531, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maximalDamage: 15
+  isExplosive: 0
   bounciness: 1
   onCollided:
     m_PersistentCalls:
@@ -454,7 +456,7 @@ MonoBehaviour:
   m_LightType: 3
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
-  m_Color: {r: 0.49803922, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.49803922, b: 1, a: 1}
   m_Intensity: 0
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 1

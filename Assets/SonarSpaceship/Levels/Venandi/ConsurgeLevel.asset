@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: ConsurgeLevel
   m_EditorClassIdentifier: 
   levelNameStringTranslation: {fileID: 11400000, guid: 29aa2cb6d27ad5c4aab5053cdf94a743, type: 2}
-  scenePath: 
+  scenePath: Assets/SonarSpaceship/Scenes/Levels/Venandi/ConsurgeLevelScene.unity
   requiredLevels:
   - {fileID: 11400000, guid: 623a61eaa2a5bce4fa04794f67720199, type: 2}

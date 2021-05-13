@@ -6,6 +6,8 @@ namespace SonarSpaceship.Controllers
 {
     public class EnvironmentTriggerControllerScript : MonoBehaviour, IEnvironmentTriggerController
     {
+        private readonly Dictionary<int, SpaceshipControllerScript> enteredSpaceshipControllers = new Dictionary<int, SpaceshipControllerScript>();
+
         [SerializeField]
         private bool isAbleToTriggerMultipleTimes;
 
@@ -17,8 +19,6 @@ namespace SonarSpaceship.Controllers
 
         [SerializeField]
         private UnityEvent onTriggerExited = default;
-
-        private Dictionary<int, SpaceshipControllerScript> enteredSpaceshipControllers = new Dictionary<int, SpaceshipControllerScript>();
 
         public bool IsAbleToTriggerMultipleTimes
         {

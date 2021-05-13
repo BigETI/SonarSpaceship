@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: AspicioLevel
   m_EditorClassIdentifier: 
   levelNameStringTranslation: {fileID: 11400000, guid: d5c3f7157b10245498f796c3a6b08283, type: 2}
-  scenePath: 
+  scenePath: Assets/SonarSpaceship/Scenes/Levels/Venandi/AspicioLevelScene.unity
   requiredLevels:
   - {fileID: 11400000, guid: 29d1a4ad211ba804b95782c71cbdf79a, type: 2}
