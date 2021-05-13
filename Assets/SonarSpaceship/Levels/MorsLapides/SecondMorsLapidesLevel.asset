@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: SecondMorsLapidesLevel
   m_EditorClassIdentifier: 
   levelNameStringTranslation: {fileID: 11400000, guid: fada563a11b922a419b30d4b578ba60e, type: 2}
-  scenePath: 
+  scenePath: Assets/SonarSpaceship/Scenes/Levels/MorsLapides/SecondMorsLapidesLevelScene.unity
   requiredLevels:
   - {fileID: 11400000, guid: e9406854a257fb442a2f72590e153935, type: 2}

@@ -59,4 +59,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/SonarSpaceship/Scenes/Levels/Venandi/ConsurgeLevelScene.unity
     guid: 534590904336d474cad243cd803bf565
+  - enabled: 1
+    path: Assets/SonarSpaceship/Scenes/Levels/MorsLapides/FirstMorsLapidesLevelScene.unity
+    guid: 471eff512a1422448b305c9622915ed6
+  - enabled: 1
+    path: Assets/SonarSpaceship/Scenes/Levels/MorsLapides/SecondMorsLapidesLevelScene.unity
+    guid: 940cc055f6a88ca49bd66c2fe5db6031
+  - enabled: 1
+    path: Assets/SonarSpaceship/Scenes/Levels/MorsLapides/ThirdMorsLapidesLevelScene.unity
+    guid: 411641a6719806849aabbf4bdce2ab01
   m_configObjects: {}

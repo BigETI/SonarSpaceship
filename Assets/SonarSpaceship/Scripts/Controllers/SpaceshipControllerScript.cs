@@ -6,7 +6,7 @@ using UnitySceneLoaderManager;
 namespace SonarSpaceship.Controllers
 {
     [RequireComponent(typeof(Rigidbody2D))]
-    public class SpaceshipControllerScript : MonoBehaviour, ISpaceshipController
+    public class SpaceshipControllerScript : AControllersControllerScript<SpaceshipControllerScript>, ISpaceshipController
     {
         private readonly Dictionary<int, RefillStationControllerScript> dockedRefillStationControllers = new Dictionary<int, RefillStationControllerScript>();
 
@@ -40,7 +40,7 @@ namespace SonarSpaceship.Controllers
         private float emssDistance = 100.0f;
 
         [SerializeField]
-        private float emssAngle = 20.0f;
+        private float emssAngle = 40.0f;
 
         [SerializeField]
         private float maximalAttachmentCooldownTime = 1.0f;
@@ -221,6 +221,10 @@ namespace SonarSpaceship.Controllers
             {
                 ContainerControllerScript attached_container_controller = AttachedContainerController;
                 attached_container_controller.transform.SetParent(null, true);
+                if (AttachedContainerController.GetComponentInParent<Rigidbody2D>() is Rigidbody2D attached_container_controller_rigid_body_2d && (attached_container_controller_rigid_body_2d.gameObject.GetInstanceID() != gameObject.GetInstanceID()))
+                {
+                    attached_container_controller_rigid_body_2d.simulated = true;
+                }
                 AttachedContainerController = null;
                 AttachmentCooldownTime = maximalAttachmentCooldownTime;
                 if (onContainerDetached != null)
@@ -396,6 +400,10 @@ namespace SonarSpaceship.Controllers
                     {
                         container_controller.transform.SetParent(transform, true);
                         AttachedContainerController = container_controller;
+                        if (container_controller.GetComponentInParent<Rigidbody2D>() is Rigidbody2D container_controller_rigid_body_2d && (container_controller_rigid_body_2d.gameObject.GetInstanceID() != gameObject.GetInstanceID()))
+                        {
+                            container_controller_rigid_body_2d.simulated = false;
+                        }
                         if (onContainerAttached != null)
                         {
                             onContainerAttached.Invoke();

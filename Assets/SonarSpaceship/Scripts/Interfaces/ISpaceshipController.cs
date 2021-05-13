@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace SonarSpaceship
 {
-    public interface ISpaceshipController : IBehaviour
+    public interface ISpaceshipController : IControllersController
     {
         float LookAtSmoothing { get; set; }
 
