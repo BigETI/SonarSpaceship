@@ -61,6 +61,10 @@ namespace SonarSpaceship.Controllers
             Matrix4x4 old_matrix = Gizmos.matrix;
             Gizmos.matrix = transform.localToWorldMatrix;
             Gizmos.DrawWireSphere(Vector3.zero, 0.5f);
+            if (isExplosive)
+            {
+                Gizmos.DrawWireSphere(Vector3.zero, 0.75f);
+            }
             EntityGizmos.DrawArrow(Vector3.zero, 1.0f);
             Gizmos.matrix = old_matrix;
         }

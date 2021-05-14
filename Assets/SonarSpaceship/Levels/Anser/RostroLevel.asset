@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: RostroLevel
   m_EditorClassIdentifier: 
   levelNameStringTranslation: {fileID: 11400000, guid: 2e192fd77f8bd054992f3c39d228a7fa, type: 2}
-  scenePath: 
+  scenePath: Assets/SonarSpaceship/Scenes/Levels/Anser/RostroLevelScene.unity
   requiredLevels:
   - {fileID: 11400000, guid: ac5601f7893ff25498ba5e20e35f2066, type: 2}

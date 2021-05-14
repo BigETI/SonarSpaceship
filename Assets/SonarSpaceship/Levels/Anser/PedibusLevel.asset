@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: PedibusLevel
   m_EditorClassIdentifier: 
   levelNameStringTranslation: {fileID: 11400000, guid: 2e30b40a3af1b824193ad2e49291ecdb, type: 2}
-  scenePath: 
+  scenePath: Assets/SonarSpaceship/Scenes/Levels/Anser/PedibusLevelScene.unity
   requiredLevels:
   - {fileID: 11400000, guid: deb4f5fd145f7104f8d5d3f18da0197a, type: 2}

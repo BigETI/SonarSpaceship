@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: BrunneisLevel
   m_EditorClassIdentifier: 
   levelNameStringTranslation: {fileID: 11400000, guid: 99a86ab395510ad4788be3dd3d654cd4, type: 2}
-  scenePath: 
+  scenePath: Assets/SonarSpaceship/Scenes/Levels/Anser/BrunneisLevelScene.unity
   requiredLevels:
   - {fileID: 11400000, guid: e6a5f1b04d01c3841854f4bf657b060f, type: 2}
