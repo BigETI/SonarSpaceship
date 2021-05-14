@@ -64,30 +64,33 @@ namespace SonarSpaceship
                 throw new ArgumentException("Delta time can't be negative.", nameof(deltaTime));
             }
             EPingResult ret = EPingResult.Miss;
-            Vector3 world_position = PingableController.transform.position;
-            Vector2 position = new Vector2(world_position.x, world_position.y);
-            if (PingableController && IssuingSpaceshipController && (TraveledDistance < MaximalDistance))
+            if (PingableController && IssuingSpaceshipController)
             {
-                Vector2 last_delta = LastPingableControllerPosition - StartPosition;
-                Vector2 delta = position - StartPosition;
-                float last_distance = last_delta.magnitude;
-                float distance = delta.magnitude;
-                float half_angle = Angle * 0.5f;
-                bool last_is_in_sight = (last_distance <= float.Epsilon) || (Vector2.Angle(Direction, last_delta / last_distance) <= half_angle);
-                bool is_in_sight = (distance <= float.Epsilon) || (Vector2.Angle(Direction, delta / distance) <= half_angle);
-                float last_traveled_distance = TraveledDistance;
-                ret = EPingResult.IsProcessing;
-                TraveledDistance = Mathf.Min(last_traveled_distance + (deltaTime * Speed), MaximalDistance);
-                if (last_is_in_sight && is_in_sight)
+                Vector3 world_position = PingableController.transform.position;
+                Vector2 position = new Vector2(world_position.x, world_position.y);
+                if (TraveledDistance < MaximalDistance)
                 {
-                    if (((last_distance <= last_traveled_distance) && (distance >= TraveledDistance)) || ((last_distance >= last_traveled_distance) && (distance <= TraveledDistance)))
+                    Vector2 last_delta = LastPingableControllerPosition - StartPosition;
+                    Vector2 delta = position - StartPosition;
+                    float last_distance = last_delta.magnitude;
+                    float distance = delta.magnitude;
+                    float half_angle = Angle * 0.5f;
+                    bool last_is_in_sight = (last_distance <= float.Epsilon) || (Vector2.Angle(Direction, last_delta / last_distance) <= half_angle);
+                    bool is_in_sight = (distance <= float.Epsilon) || (Vector2.Angle(Direction, delta / distance) <= half_angle);
+                    float last_traveled_distance = TraveledDistance;
+                    ret = EPingResult.IsProcessing;
+                    TraveledDistance = Mathf.Min(last_traveled_distance + (deltaTime * Speed), MaximalDistance);
+                    if (last_is_in_sight && is_in_sight)
                     {
-                        PingableController.ReceivePing(IssuingSpaceshipController);
-                        ret = EPingResult.Hit;
+                        if (((last_distance <= last_traveled_distance) && (distance >= TraveledDistance)) || ((last_distance >= last_traveled_distance) && (distance <= TraveledDistance)))
+                        {
+                            PingableController.ReceivePing(IssuingSpaceshipController);
+                            ret = EPingResult.Hit;
+                        }
                     }
                 }
+                LastPingableControllerPosition = position;
             }
-            LastPingableControllerPosition = position;
             return ret;
         }
     }
