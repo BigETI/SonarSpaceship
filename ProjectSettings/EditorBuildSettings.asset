@@ -41,4 +41,22 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/SonarSpaceship/Scenes/Levels/Anser/BrunneisLevelScene.unity
     guid: 14c57d607fcf222408790fa84c3f3256
+  - enabled: 1
+    path: Assets/SonarSpaceship/Scenes/Levels/Venandi/EscaLevelScene.unity
+    guid: 449f08a133636eb459438a19a6955739
+  - enabled: 1
+    path: Assets/SonarSpaceship/Scenes/Levels/Venandi/AspicioLevelScene.unity
+    guid: caebb8d93e6e9c64f86aae3717c4868e
+  - enabled: 1
+    path: Assets/SonarSpaceship/Scenes/Levels/Venandi/VenariLevelScene.unity
+    guid: cd7912bbf4c1d3848aac8edd0d9f3b33
+  - enabled: 1
+    path: Assets/SonarSpaceship/Scenes/Levels/Venandi/MortemLevelScene.unity
+    guid: 65d96bc5ec1c0f44192dd2816ba922b3
+  - enabled: 1
+    path: Assets/SonarSpaceship/Scenes/Levels/Venandi/SomniumLevelScene.unity
+    guid: f715f08471f6564439d2be9f540bb8ad
+  - enabled: 1
+    path: Assets/SonarSpaceship/Scenes/Levels/Venandi/ConsurgeLevelScene.unity
+    guid: 534590904336d474cad243cd803bf565
   m_configObjects: {}

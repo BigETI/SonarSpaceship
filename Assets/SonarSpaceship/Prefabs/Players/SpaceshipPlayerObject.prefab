@@ -195,7 +195,7 @@ MonoBehaviour:
   maximalFuelCapacity: 30
   emssSpeed: 20
   emssDistance: 20
-  emssAngle: 20
+  emssAngle: 40
   maximalAttachmentCooldownTime: 1
   onSpawned:
     m_PersistentCalls:

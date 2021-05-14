@@ -50,8 +50,7 @@ namespace SonarSpaceship.Triggers
             {
                 Vector2 position = (worldSize + Vector2.one) * 0.5f;
                 Vector2 size = worldSize + (Vector2.one * 2.0f);
-                BoxCollider2D box_collider_2d;
-                if (InstantiateGameObjectWithBoxCollider2D("TopWorldBorder", out box_collider_2d))
+                if (InstantiateGameObjectWithBoxCollider2D("TopWorldBorder", out BoxCollider2D box_collider_2d))
                 {
                     box_collider_2d.transform.localPosition = new Vector2(0.0f, position.y);
                     box_collider_2d.size = new Vector2(size.x, 1.0f);

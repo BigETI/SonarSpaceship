@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: EscaLevel
   m_EditorClassIdentifier: 
   levelNameStringTranslation: {fileID: 11400000, guid: 4d8adcf6061086e488696e5d200c5767, type: 2}
-  scenePath: 
+  scenePath: Assets/SonarSpaceship/Scenes/Levels/Venandi/EscaLevelScene.unity
   requiredLevels:
   - {fileID: 11400000, guid: f3e47fc45ca49084e8719b96b2b09c51, type: 2}
