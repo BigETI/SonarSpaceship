@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnitySceneLoaderManager;
@@ -18,6 +19,9 @@ namespace SonarSpaceship.Controllers
 
         [SerializeField]
         private UnityEvent onSettingsMenuShown = default;
+
+        [SerializeField]
+        private UnityEvent onCreditsMenuShown = default;
 
         private EMainMenuState mainMenuState = EMainMenuState.Nothing;
 
@@ -61,6 +65,13 @@ namespace SonarSpaceship.Controllers
                             }
                             OnSettingsMenuShown?.Invoke();
                             break;
+                        case EMainMenuState.CreditsMenu:
+                            if (onCreditsMenuShown != null)
+                            {
+                                onCreditsMenuShown.Invoke();
+                            }
+                            OnCreditsMenuShown?.Invoke();
+                            break;
                     }
                 }
             }
@@ -74,15 +85,26 @@ namespace SonarSpaceship.Controllers
 
         public event SettingsMenuShownDelegate OnSettingsMenuShown;
 
+        public event CreditsMenuShownDelegate OnCreditsMenuShown;
+
         public void ShowMainMenu() => MainMenuState = EMainMenuState.MainMenu;
 
         public void ShowProfileMenu() => MainMenuState = EMainMenuState.ProfileMenu;
 
         public void ShowSettingsMenu() => MainMenuState = EMainMenuState.SettingsMenu;
 
+        public void ShowCreditsMenu() => MainMenuState = EMainMenuState.CreditsMenu;
+
         public void ShowLevelSelectionMenu() => SceneLoaderManager.LoadScenes("LevelSelectionMenuScene");
 
-        public void ShowCreditsMenu() => SceneLoaderManager.LoadScenes("CreditsMenuScene");
+        public void OpenURL(string url)
+        {
+            if (url == null)
+            {
+                throw new ArgumentNullException(nameof(url));
+            }
+            Application.OpenURL(url);
+        }
 
         public void Exit()
         {

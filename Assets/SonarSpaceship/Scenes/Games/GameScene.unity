@@ -948,7 +948,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 1.7785467, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -2490,18 +2490,6 @@ PrefabInstance:
     - target: {fileID: 682273870271153834, guid: 44ee9c689ae8ad54d96f3df73b9b33f1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2268400244767355315, guid: 44ee9c689ae8ad54d96f3df73b9b33f1, type: 3}
-      propertyPath: m_Color.b
-      value: 0.5235849
-      objectReference: {fileID: 0}
-    - target: {fileID: 2268400244767355315, guid: 44ee9c689ae8ad54d96f3df73b9b33f1, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2268400244767355315, guid: 44ee9c689ae8ad54d96f3df73b9b33f1, type: 3}
-      propertyPath: m_Color.r
-      value: 0.49803922
       objectReference: {fileID: 0}
     - target: {fileID: 2890900959244597914, guid: 44ee9c689ae8ad54d96f3df73b9b33f1, type: 3}
       propertyPath: m_Color.b

@@ -10,6 +10,8 @@
 
         ProfileMenu,
 
-        SettingsMenu
+        SettingsMenu,
+
+        CreditsMenu
     }
 }

@@ -27,6 +27,9 @@ namespace SonarSpaceship.Controllers
         private UnityEvent onProfileNameRequested = default;
 
         [SerializeField]
+        private UnityEvent onProfileSelected = default;
+
+        [SerializeField]
         private UnityEvent onProfileDeletionRequested = default;
 
         [SerializeField]
@@ -62,6 +65,8 @@ namespace SonarSpaceship.Controllers
 
         public event ProfileNameRequestedDelegate OnProfileNameRequested;
 
+        public event ProfileSelectedDelegate OnProfileSelected;
+
         public event ProfileDeletionRequestedDelegate OnProfileDeletionRequested;
 
         public event ProfileDeletedDelegate OnProfileDeleted;
@@ -71,6 +76,11 @@ namespace SonarSpaceship.Controllers
             GameManager.SelectedProfileIndex = profileIndex;
             if (Profiles.IsProfileAvailable(profileIndex))
             {
+                if (onProfileSelected != null)
+                {
+                    onProfileSelected.Invoke();
+                }
+                OnProfileSelected?.Invoke(profileIndex);
                 SceneLoaderManager.LoadScenes("LevelSelectionMenuScene");
             }
             else

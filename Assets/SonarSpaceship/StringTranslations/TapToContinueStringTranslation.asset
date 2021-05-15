@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stringTranslation:
     strings:
-    - stringValue: Tap to play...
+    - stringValue: Tap to continue
       language: 10
-    - stringValue: "Ber\xFChre um zu spielen..."
+    - stringValue: "Ber\xFChre um fortzufahren"
       language: 15
   comment: 

@@ -18,9 +18,11 @@
 
         void ShowSettingsMenu();
 
+        void ShowCreditsMenu();
+
         void ShowLevelSelectionMenu();
 
-        void ShowCreditsMenu();
+        void OpenURL(string url);
 
         void Exit();
     }
