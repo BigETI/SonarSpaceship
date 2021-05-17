@@ -18,8 +18,23 @@ EditorBuildSettings:
     path: Assets/SonarSpaceship/Scenes/Games/GameScene.unity
     guid: d1c3109bdb54ad54c8a2b2838528e640
   - enabled: 1
-    path: Assets/SonarSpaceship/Scenes/Levels/Tests/TestLevelScene.unity
-    guid: b9d79bac453b28b4d9d1180e7e36bbbe
+    path: Assets/SonarSpaceship/Scenes/Levels/NovumRimor/FirstNovumRimorLevelScene.unity
+    guid: f44674c99cf34ea4b9890429dbb9a638
+  - enabled: 1
+    path: Assets/SonarSpaceship/Scenes/Levels/NovumRimor/SecondNovumRimorLevelScene.unity
+    guid: 6bf26c6bd374fc54788396bbadc8ff19
+  - enabled: 1
+    path: Assets/SonarSpaceship/Scenes/Levels/NovumRimor/ThirdNovumRimorLevelScene.unity
+    guid: ae0bd399e7e466b44a890510eca6f43b
+  - enabled: 1
+    path: Assets/SonarSpaceship/Scenes/Levels/NovumRimor/FourthNovumRimorLevelScene.unity
+    guid: 3d55c3fddcd557d46a56937b681cf0a5
+  - enabled: 1
+    path: Assets/SonarSpaceship/Scenes/Levels/NovumRimor/FifthNovumRimorLevelScene.unity
+    guid: 15608f3980d579b4d91803686b6297ea
+  - enabled: 1
+    path: Assets/SonarSpaceship/Scenes/Levels/NovumRimor/SixthNovumRimorLevelScene.unity
+    guid: b134fb7724423bf4c97e61cc44a534d5
   - enabled: 1
     path: Assets/SonarSpaceship/Scenes/Levels/Anser/RostroLevelScene.unity
     guid: 09bd24ec5b31766488ef2448ea1284d3
