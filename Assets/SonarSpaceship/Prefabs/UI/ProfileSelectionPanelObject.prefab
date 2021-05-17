@@ -92,7 +92,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 0
+  m_fontSize: 96
   m_fontSizeBase: 96
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -372,6 +372,9 @@ MonoBehaviour:
   onProfileNameRequested:
     m_PersistentCalls:
       m_Calls: []
+  onProfileSelected:
+    m_PersistentCalls:
+      m_Calls: []
   onProfileDeletionRequested:
     m_PersistentCalls:
       m_Calls: []
@@ -390,7 +393,6 @@ GameObject:
   - component: {fileID: 5886535386085648489}
   - component: {fileID: 5886535386085648494}
   - component: {fileID: 5886535386085648495}
-  - component: {fileID: 6120942876803519283}
   m_Layer: 0
   m_Name: SelectProfileButton
   m_TagString: Untagged
@@ -500,53 +502,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6120942876803519283}
-        m_TargetAssemblyTypeName: UnityTiming.Controllers.ClockControllerScript,
-          UnityTiming
-        m_MethodName: set_IsRunning
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
---- !u!114 &6120942876803519283
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5886535386085648493}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b63c04dec711a04e8d7b021ad84a4f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timing:
-    tickTime: 0.5
-    elapsedTickTime: 0
-  isRunning: 0
-  useFixedUpdate: 0
-  unscaledTime: 0
-  onTick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6120942876803519283}
-        m_TargetAssemblyTypeName: UnityTiming.Controllers.ClockControllerScript,
-          UnityTiming
-        m_MethodName: set_IsRunning
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 8308384569618214175}
         m_TargetAssemblyTypeName: SonarSpaceship.Controllers.ProfileSelectionUIControllerScript,
           SonarSpaceshipAssemblyDefinition
@@ -558,7 +513,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!1 &5886535386742144519
 GameObject:
@@ -618,14 +573,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.02745098, g: 0.2, b: 0.28627452, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 6388fd4bf0412174788f1c6aab6241ba, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -863,6 +818,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1553101307227777183, guid: 030400cfac8d4a943a1351e1e16b0168, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 46e31ede2cd752e4aa5a19ffb83cd35c, type: 3}
     - target: {fileID: 3813141386268189124, guid: 030400cfac8d4a943a1351e1e16b0168, type: 3}
       propertyPath: sector
       value: 
@@ -969,6 +928,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1553101307227777183, guid: 030400cfac8d4a943a1351e1e16b0168, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2eb42b0f0e82b484284fdfc8e2cc6255, type: 3}
     - target: {fileID: 3813141386268189124, guid: 030400cfac8d4a943a1351e1e16b0168, type: 3}
       propertyPath: sector
       value: 
@@ -1075,6 +1038,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1553101307227777183, guid: 030400cfac8d4a943a1351e1e16b0168, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 332f5c19f2bcf4e459a81f9ed749e5ce, type: 3}
     - target: {fileID: 3813141386268189124, guid: 030400cfac8d4a943a1351e1e16b0168, type: 3}
       propertyPath: sector
       value: 
@@ -1181,6 +1148,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1553101307227777183, guid: 030400cfac8d4a943a1351e1e16b0168, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1685c255a563ab6468929ad89c13fd8d, type: 3}
     - target: {fileID: 3813141386268189124, guid: 030400cfac8d4a943a1351e1e16b0168, type: 3}
       propertyPath: sector
       value: 
@@ -1287,6 +1258,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1553101307227777183, guid: 030400cfac8d4a943a1351e1e16b0168, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e53e394dab569304d9a57b8a6441bb27, type: 3}
     - target: {fileID: 3813141386268189124, guid: 030400cfac8d4a943a1351e1e16b0168, type: 3}
       propertyPath: sector
       value: 

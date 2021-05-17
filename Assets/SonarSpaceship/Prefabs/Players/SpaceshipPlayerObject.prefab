@@ -249,6 +249,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40b11ef3f03e9ea4aa8460c0f73f917f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maximalTouchMovementDistance: 5
 --- !u!114 &2565611503218674415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -619,9 +620,9 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 1
+        value: 0.25
         inSlope: 0
-        outSlope: -1
+        outSlope: -0.25
         tangentMode: 69
         weightedMode: 0
         inWeight: 0.33333334
@@ -640,8 +641,8 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.49803922, g: 1, b: 0.5254902, a: 1}
-      key1: {r: 0.49803922, g: 1, b: 0.5254902, a: 0}
+      key0: {r: 0.49803922, g: 0.7490196, b: 1, a: 1}
+      key1: {r: 0.49803922, g: 0.7490196, b: 1, a: 0}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}

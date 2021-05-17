@@ -1,7 +1,13 @@
-﻿namespace SonarSpaceship
+﻿using UnityTranslator.Objects;
+
+namespace SonarSpaceship
 {
     public interface IMainMenuController : IBehaviour
     {
+        StringTranslationObjectScript ExitGameTitleStringTranslation { get; set; }
+
+        StringTranslationObjectScript ExitGameMessageStringTranslation { get; set; }
+
         EMainMenuState MainMenuState { get; set; }
 
         event TapToContinueShownDelegate OnTapToContinueShown;
@@ -11,6 +17,10 @@
         event ProfileMenuShownDelegate OnProfileMenuShown;
 
         event SettingsMenuShownDelegate OnSettingsMenuShown;
+
+        event ExitGameRequestAcceptedDelegate OnExitGameRequestAccepted;
+
+        event ExitGameRequestDeniedDelegate OnExitGameRequestDenied;
 
         void ShowMainMenu();
 
@@ -24,6 +34,8 @@
 
         void OpenURL(string url);
 
-        void Exit();
+        void RequestExitingGame();
+
+        void ExitGame();
     }
 }

@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stringTranslation:
     strings:
-    - stringValue: Do you really want to exit this level?
+    - stringValue: Do you really want to exit this game?
       language: 10
-    - stringValue: "M\xF6chtest du wirklich dieses Level abbrechen?"
+    - stringValue: "M\xF6chtest du wirklich dieses Spiel beenden?"
       language: 15
   comment: 

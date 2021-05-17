@@ -88,7 +88,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3836496407902766138}
-  - component: {fileID: 5150539692998198117}
+  - component: {fileID: 3383010577727820236}
   - component: {fileID: 4078944747102468895}
   - component: {fileID: 8157889347921788491}
   m_Layer: 0
@@ -113,8 +113,8 @@ Transform:
   m_Father: {fileID: 4546338983252551573}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &5150539692998198117
-BoxCollider2D:
+--- !u!60 &3383010577727820236
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -129,16 +129,52 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.978125, y: 0.725}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.2765625, y: -0.30937502}
+      - {x: 0.36406252, y: -0.26875}
+      - {x: 0.41093752, y: -0.234375}
+      - {x: 0.44218752, y: -0.203125}
+      - {x: 0.4671875, y: -0.16875}
+      - {x: 0.4796875, y: -0.1375}
+      - {x: 0.4859375, y: -0.078125}
+      - {x: 0.48906252, y: -0.056250002}
+      - {x: 0.48906252, y: 0.1}
+      - {x: 0.4546875, y: 0.16875}
+      - {x: 0.42656252, y: 0.20625}
+      - {x: 0.37968752, y: 0.25}
+      - {x: 0.34843752, y: 0.275}
+      - {x: 0.3078125, y: 0.303125}
+      - {x: 0.2515625, y: 0.33125}
+      - {x: 0.1640625, y: 0.359375}
+      - {x: 0.1421875, y: 0.3625}
+      - {x: -0.0609375, y: 0.3625}
+      - {x: -0.1078125, y: 0.35625002}
+      - {x: -0.1640625, y: 0.346875}
+      - {x: -0.2234375, y: 0.321875}
+      - {x: -0.33281252, y: 0.26875}
+      - {x: -0.3703125, y: 0.24375}
+      - {x: -0.42656252, y: 0.2}
+      - {x: -0.4515625, y: 0.165625}
+      - {x: -0.4796875, y: 0.115625}
+      - {x: -0.48906252, y: 0.081250004}
+      - {x: -0.48906252, y: -0.16250001}
+      - {x: -0.4859375, y: -0.171875}
+      - {x: -0.4171875, y: -0.2375}
+      - {x: -0.3359375, y: -0.29375002}
+      - {x: -0.27031252, y: -0.32500002}
+      - {x: -0.2140625, y: -0.346875}
+      - {x: -0.1234375, y: -0.3625}
+      - {x: 0.0640625, y: -0.3625}
+      - {x: 0.1453125, y: -0.35}
+      - {x: 0.1921875, y: -0.34062502}
 --- !u!114 &4078944747102468895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,7 +205,7 @@ MonoBehaviour:
           m_StringArgument: Collide
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 5150539692998198117}
+      - m_Target: {fileID: 3383010577727820236}
         m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
         m_MethodName: set_enabled
         m_Mode: 6
@@ -204,6 +240,19 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 4546338983252551575}
+        m_TargetAssemblyTypeName: UnityEngine.Experimental.Rendering.Universal.ShadowCaster2D,
+          Unity.RenderPipelines.Universal.Runtime
+        m_MethodName: set_castsShadows
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!95 &8157889347921788491
 Animator:
@@ -374,7 +423,7 @@ MonoBehaviour:
   - {x: -0.4761317, y: -0.035176624, z: 0}
   m_ShapePathHash: 955690924
   m_Mesh: {fileID: 0}
-  m_InstanceId: 167116
+  m_InstanceId: 122348
 --- !u!1 &4944666734659328400
 GameObject:
   m_ObjectHideFlags: 0

@@ -37,14 +37,6 @@ namespace SonarSpaceship.InputActions
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""MouseLookAt"",
-                    ""type"": ""Value"",
-                    ""id"": ""42f39adc-6dca-400f-9f81-c6acfde0e988"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
                     ""name"": ""Move"",
                     ""type"": ""Value"",
                     ""id"": ""88823946-7210-4b6a-a008-62958aafeb0e"",
@@ -57,6 +49,30 @@ namespace SonarSpaceship.InputActions
                     ""type"": ""Button"",
                     ""id"": ""27234c13-39d2-4b9c-8a42-c5e459a84e46"",
                     ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""TouchMove"",
+                    ""type"": ""Value"",
+                    ""id"": ""b19526bc-1620-491c-9172-fa308edcd6b8"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""ScreenLookAt"",
+                    ""type"": ""Value"",
+                    ""id"": ""42f39adc-6dca-400f-9f81-c6acfde0e988"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""TouchPressRelease"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""08f307fd-1bc9-4690-ae52-6e2c36705a3e"",
+                    ""expectedControlType"": ""Touch"",
                     ""processors"": """",
                     ""interactions"": """"
                 }
@@ -245,7 +261,40 @@ namespace SonarSpaceship.InputActions
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MouseLookAt"",
+                    ""action"": ""ScreenLookAt"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""14edf080-84da-4d57-b5cc-4a612e27382d"",
+                    ""path"": ""<Touchscreen>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ScreenLookAt"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e35cea43-7ca9-4e3c-b58b-eba3cf3ee9f6"",
+                    ""path"": ""<Touchscreen>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TouchMove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""373911e3-29ef-42a3-9a1e-75356a2799d0"",
+                    ""path"": ""<Touchscreen>/press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TouchPressRelease"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -258,9 +307,11 @@ namespace SonarSpaceship.InputActions
             m_GameActionMap = asset.FindActionMap("GameActionMap", throwIfNotFound: true);
             m_GameActionMap_DetachContainer = m_GameActionMap.FindAction("DetachContainer", throwIfNotFound: true);
             m_GameActionMap_LookAt = m_GameActionMap.FindAction("LookAt", throwIfNotFound: true);
-            m_GameActionMap_MouseLookAt = m_GameActionMap.FindAction("MouseLookAt", throwIfNotFound: true);
             m_GameActionMap_Move = m_GameActionMap.FindAction("Move", throwIfNotFound: true);
             m_GameActionMap_Ping = m_GameActionMap.FindAction("Ping", throwIfNotFound: true);
+            m_GameActionMap_TouchMove = m_GameActionMap.FindAction("TouchMove", throwIfNotFound: true);
+            m_GameActionMap_ScreenLookAt = m_GameActionMap.FindAction("ScreenLookAt", throwIfNotFound: true);
+            m_GameActionMap_TouchPressRelease = m_GameActionMap.FindAction("TouchPressRelease", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -312,18 +363,22 @@ namespace SonarSpaceship.InputActions
         private IGameActionMapActions m_GameActionMapActionsCallbackInterface;
         private readonly InputAction m_GameActionMap_DetachContainer;
         private readonly InputAction m_GameActionMap_LookAt;
-        private readonly InputAction m_GameActionMap_MouseLookAt;
         private readonly InputAction m_GameActionMap_Move;
         private readonly InputAction m_GameActionMap_Ping;
+        private readonly InputAction m_GameActionMap_TouchMove;
+        private readonly InputAction m_GameActionMap_ScreenLookAt;
+        private readonly InputAction m_GameActionMap_TouchPressRelease;
         public struct GameActionMapActions
         {
             private @GameInputActions m_Wrapper;
             public GameActionMapActions(@GameInputActions wrapper) { m_Wrapper = wrapper; }
             public InputAction @DetachContainer => m_Wrapper.m_GameActionMap_DetachContainer;
             public InputAction @LookAt => m_Wrapper.m_GameActionMap_LookAt;
-            public InputAction @MouseLookAt => m_Wrapper.m_GameActionMap_MouseLookAt;
             public InputAction @Move => m_Wrapper.m_GameActionMap_Move;
             public InputAction @Ping => m_Wrapper.m_GameActionMap_Ping;
+            public InputAction @TouchMove => m_Wrapper.m_GameActionMap_TouchMove;
+            public InputAction @ScreenLookAt => m_Wrapper.m_GameActionMap_ScreenLookAt;
+            public InputAction @TouchPressRelease => m_Wrapper.m_GameActionMap_TouchPressRelease;
             public InputActionMap Get() { return m_Wrapper.m_GameActionMap; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -339,15 +394,21 @@ namespace SonarSpaceship.InputActions
                     @LookAt.started -= m_Wrapper.m_GameActionMapActionsCallbackInterface.OnLookAt;
                     @LookAt.performed -= m_Wrapper.m_GameActionMapActionsCallbackInterface.OnLookAt;
                     @LookAt.canceled -= m_Wrapper.m_GameActionMapActionsCallbackInterface.OnLookAt;
-                    @MouseLookAt.started -= m_Wrapper.m_GameActionMapActionsCallbackInterface.OnMouseLookAt;
-                    @MouseLookAt.performed -= m_Wrapper.m_GameActionMapActionsCallbackInterface.OnMouseLookAt;
-                    @MouseLookAt.canceled -= m_Wrapper.m_GameActionMapActionsCallbackInterface.OnMouseLookAt;
                     @Move.started -= m_Wrapper.m_GameActionMapActionsCallbackInterface.OnMove;
                     @Move.performed -= m_Wrapper.m_GameActionMapActionsCallbackInterface.OnMove;
                     @Move.canceled -= m_Wrapper.m_GameActionMapActionsCallbackInterface.OnMove;
                     @Ping.started -= m_Wrapper.m_GameActionMapActionsCallbackInterface.OnPing;
                     @Ping.performed -= m_Wrapper.m_GameActionMapActionsCallbackInterface.OnPing;
                     @Ping.canceled -= m_Wrapper.m_GameActionMapActionsCallbackInterface.OnPing;
+                    @TouchMove.started -= m_Wrapper.m_GameActionMapActionsCallbackInterface.OnTouchMove;
+                    @TouchMove.performed -= m_Wrapper.m_GameActionMapActionsCallbackInterface.OnTouchMove;
+                    @TouchMove.canceled -= m_Wrapper.m_GameActionMapActionsCallbackInterface.OnTouchMove;
+                    @ScreenLookAt.started -= m_Wrapper.m_GameActionMapActionsCallbackInterface.OnScreenLookAt;
+                    @ScreenLookAt.performed -= m_Wrapper.m_GameActionMapActionsCallbackInterface.OnScreenLookAt;
+                    @ScreenLookAt.canceled -= m_Wrapper.m_GameActionMapActionsCallbackInterface.OnScreenLookAt;
+                    @TouchPressRelease.started -= m_Wrapper.m_GameActionMapActionsCallbackInterface.OnTouchPressRelease;
+                    @TouchPressRelease.performed -= m_Wrapper.m_GameActionMapActionsCallbackInterface.OnTouchPressRelease;
+                    @TouchPressRelease.canceled -= m_Wrapper.m_GameActionMapActionsCallbackInterface.OnTouchPressRelease;
                 }
                 m_Wrapper.m_GameActionMapActionsCallbackInterface = instance;
                 if (instance != null)
@@ -358,15 +419,21 @@ namespace SonarSpaceship.InputActions
                     @LookAt.started += instance.OnLookAt;
                     @LookAt.performed += instance.OnLookAt;
                     @LookAt.canceled += instance.OnLookAt;
-                    @MouseLookAt.started += instance.OnMouseLookAt;
-                    @MouseLookAt.performed += instance.OnMouseLookAt;
-                    @MouseLookAt.canceled += instance.OnMouseLookAt;
                     @Move.started += instance.OnMove;
                     @Move.performed += instance.OnMove;
                     @Move.canceled += instance.OnMove;
                     @Ping.started += instance.OnPing;
                     @Ping.performed += instance.OnPing;
                     @Ping.canceled += instance.OnPing;
+                    @TouchMove.started += instance.OnTouchMove;
+                    @TouchMove.performed += instance.OnTouchMove;
+                    @TouchMove.canceled += instance.OnTouchMove;
+                    @ScreenLookAt.started += instance.OnScreenLookAt;
+                    @ScreenLookAt.performed += instance.OnScreenLookAt;
+                    @ScreenLookAt.canceled += instance.OnScreenLookAt;
+                    @TouchPressRelease.started += instance.OnTouchPressRelease;
+                    @TouchPressRelease.performed += instance.OnTouchPressRelease;
+                    @TouchPressRelease.canceled += instance.OnTouchPressRelease;
                 }
             }
         }
@@ -375,9 +442,11 @@ namespace SonarSpaceship.InputActions
         {
             void OnDetachContainer(InputAction.CallbackContext context);
             void OnLookAt(InputAction.CallbackContext context);
-            void OnMouseLookAt(InputAction.CallbackContext context);
             void OnMove(InputAction.CallbackContext context);
             void OnPing(InputAction.CallbackContext context);
+            void OnTouchMove(InputAction.CallbackContext context);
+            void OnScreenLookAt(InputAction.CallbackContext context);
+            void OnTouchPressRelease(InputAction.CallbackContext context);
         }
     }
 }

@@ -1,13 +1,21 @@
 ﻿using System;
+using UnityDialog;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnitySceneLoaderManager;
+using UnityTranslator.Objects;
 
 namespace SonarSpaceship.Controllers
 {
     public class MainMenuControllerScript : MonoBehaviour, IMainMenuController
     {
+        [SerializeField]
+        private StringTranslationObjectScript exitGameTitleStringTranslation = default;
+
+        [SerializeField]
+        private StringTranslationObjectScript exitGameMessageStringTranslation = default;
+
         [SerializeField]
         private UnityEvent onTapToContinueShown = default;
 
@@ -23,7 +31,25 @@ namespace SonarSpaceship.Controllers
         [SerializeField]
         private UnityEvent onCreditsMenuShown = default;
 
+        [SerializeField]
+        private UnityEvent onExitGameRequestAccepted = default;
+
+        [SerializeField]
+        private UnityEvent onExitGameRequestDenied = default;
+
         private EMainMenuState mainMenuState = EMainMenuState.Nothing;
+
+        public StringTranslationObjectScript ExitGameTitleStringTranslation
+        {
+            get => exitGameTitleStringTranslation;
+            set => exitGameTitleStringTranslation = value;
+        }
+
+        public StringTranslationObjectScript ExitGameMessageStringTranslation
+        {
+            get => exitGameMessageStringTranslation;
+            set => exitGameMessageStringTranslation = value;
+        }
 
         public static bool IsShowingInitialMainMenuState { get; private set; } = true;
 
@@ -87,6 +113,10 @@ namespace SonarSpaceship.Controllers
 
         public event CreditsMenuShownDelegate OnCreditsMenuShown;
 
+        public event ExitGameRequestAcceptedDelegate OnExitGameRequestAccepted;
+
+        public event ExitGameRequestDeniedDelegate OnExitGameRequestDenied;
+
         public void ShowMainMenu() => MainMenuState = EMainMenuState.MainMenu;
 
         public void ShowProfileMenu() => MainMenuState = EMainMenuState.ProfileMenu;
@@ -106,7 +136,37 @@ namespace SonarSpaceship.Controllers
             Application.OpenURL(url);
         }
 
-        public void Exit()
+        public void RequestExitingGame()
+        {
+            Dialogs.Show
+            (
+                exitGameTitleStringTranslation ? exitGameTitleStringTranslation.ToString() : string.Empty,
+                exitGameMessageStringTranslation ? exitGameMessageStringTranslation.ToString() : string.Empty,
+                EDialogType.Information,
+                EDialogButtons.YesNo,
+                (response, _) =>
+                {
+                    if (response == EDialogResponse.Yes)
+                    {
+                        if (onExitGameRequestAccepted != null)
+                        {
+                            onExitGameRequestAccepted.Invoke();
+                        }
+                        OnExitGameRequestAccepted?.Invoke();
+                    }
+                    else
+                    {
+                        if (onExitGameRequestDenied != null)
+                        {
+                            onExitGameRequestDenied.Invoke();
+                        }
+                        OnExitGameRequestDenied?.Invoke();
+                    }
+                }
+            );
+        }
+
+        public void ExitGame()
         {
 #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
