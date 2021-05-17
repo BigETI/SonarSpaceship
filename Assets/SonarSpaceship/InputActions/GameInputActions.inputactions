@@ -22,14 +22,6 @@
                     "interactions": ""
                 },
                 {
-                    "name": "MouseLookAt",
-                    "type": "Value",
-                    "id": "42f39adc-6dca-400f-9f81-c6acfde0e988",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
                     "name": "Move",
                     "type": "Value",
                     "id": "88823946-7210-4b6a-a008-62958aafeb0e",
@@ -42,6 +34,30 @@
                     "type": "Button",
                     "id": "27234c13-39d2-4b9c-8a42-c5e459a84e46",
                     "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "TouchMove",
+                    "type": "Value",
+                    "id": "b19526bc-1620-491c-9172-fa308edcd6b8",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "ScreenLookAt",
+                    "type": "Value",
+                    "id": "42f39adc-6dca-400f-9f81-c6acfde0e988",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "TouchPressRelease",
+                    "type": "PassThrough",
+                    "id": "08f307fd-1bc9-4690-ae52-6e2c36705a3e",
+                    "expectedControlType": "Touch",
                     "processors": "",
                     "interactions": ""
                 }
@@ -230,7 +246,40 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "MouseLookAt",
+                    "action": "ScreenLookAt",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "14edf080-84da-4d57-b5cc-4a612e27382d",
+                    "path": "<Touchscreen>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ScreenLookAt",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e35cea43-7ca9-4e3c-b58b-eba3cf3ee9f6",
+                    "path": "<Touchscreen>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TouchMove",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "373911e3-29ef-42a3-9a1e-75356a2799d0",
+                    "path": "<Touchscreen>/press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TouchPressRelease",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

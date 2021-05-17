@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stringTranslation:
     strings:
-    - stringValue: Exit level
+    - stringValue: Exit game
       language: 10
-    - stringValue: Level abbrechen
+    - stringValue: Spiel beenden
       language: 15
   comment: 

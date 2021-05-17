@@ -17,6 +17,8 @@ namespace SonarSpaceship
 
         event ProfileNameRequestedDelegate OnProfileNameRequested;
 
+        event ProfileSelectedDelegate OnProfileSelected;
+
         event ProfileDeletionRequestedDelegate OnProfileDeletionRequested;
 
         event ProfileDeletedDelegate OnProfileDeleted;
