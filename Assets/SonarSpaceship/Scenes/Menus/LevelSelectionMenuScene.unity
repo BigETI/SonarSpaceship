@@ -230,7 +230,7 @@ PrefabInstance:
     - target: {fileID: 810550153715878538, guid: ce8f5a796c481bc43b321f9d6dbec146, type: 3}
       propertyPath: level
       value: 
-      objectReference: {fileID: 11400000, guid: ac5601f7893ff25498ba5e20e35f2066, type: 2}
+      objectReference: {fileID: 11400000, guid: 20ec9f8bd6a71b24b960fa9645a5c4f9, type: 2}
     - target: {fileID: 7226437828778471068, guid: ce8f5a796c481bc43b321f9d6dbec146, type: 3}
       propertyPath: m_text
       value: Test
@@ -293,11 +293,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8608858106534881988, guid: ce8f5a796c481bc43b321f9d6dbec146, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -470
+      value: -503
       objectReference: {fileID: 0}
     - target: {fileID: 8608858106534881988, guid: ce8f5a796c481bc43b321f9d6dbec146, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -278
+      value: -262.3
       objectReference: {fileID: 0}
     - target: {fileID: 8608858106534881988, guid: ce8f5a796c481bc43b321f9d6dbec146, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1613,7 +1613,7 @@ PrefabInstance:
     - target: {fileID: 810550153715878538, guid: ce8f5a796c481bc43b321f9d6dbec146, type: 3}
       propertyPath: level
       value: 
-      objectReference: {fileID: 11400000, guid: ac5601f7893ff25498ba5e20e35f2066, type: 2}
+      objectReference: {fileID: 11400000, guid: 75060fa0c5215094cb6447edd3b001a3, type: 2}
     - target: {fileID: 7226437828778471068, guid: ce8f5a796c481bc43b321f9d6dbec146, type: 3}
       propertyPath: m_text
       value: Test
@@ -2955,7 +2955,7 @@ PrefabInstance:
     - target: {fileID: 810550153715878538, guid: ce8f5a796c481bc43b321f9d6dbec146, type: 3}
       propertyPath: level
       value: 
-      objectReference: {fileID: 11400000, guid: ac5601f7893ff25498ba5e20e35f2066, type: 2}
+      objectReference: {fileID: 11400000, guid: a63c6666058dac145b85ec0672b4bfbe, type: 2}
     - target: {fileID: 7226437828778471068, guid: ce8f5a796c481bc43b321f9d6dbec146, type: 3}
       propertyPath: m_text
       value: Test
@@ -3150,7 +3150,7 @@ PrefabInstance:
     - target: {fileID: 810550153715878538, guid: ce8f5a796c481bc43b321f9d6dbec146, type: 3}
       propertyPath: level
       value: 
-      objectReference: {fileID: 11400000, guid: ac5601f7893ff25498ba5e20e35f2066, type: 2}
+      objectReference: {fileID: 11400000, guid: 661e60f45452e2449afdeeb68e190a08, type: 2}
     - target: {fileID: 7226437828778471068, guid: ce8f5a796c481bc43b321f9d6dbec146, type: 3}
       propertyPath: m_text
       value: Test
@@ -3945,7 +3945,7 @@ PrefabInstance:
     - target: {fileID: 810550153715878538, guid: ce8f5a796c481bc43b321f9d6dbec146, type: 3}
       propertyPath: level
       value: 
-      objectReference: {fileID: 11400000, guid: ac5601f7893ff25498ba5e20e35f2066, type: 2}
+      objectReference: {fileID: 11400000, guid: 079c2674399504e4484b00a72c5afff7, type: 2}
     - target: {fileID: 7226437828778471068, guid: ce8f5a796c481bc43b321f9d6dbec146, type: 3}
       propertyPath: m_text
       value: Test
@@ -4008,11 +4008,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8608858106534881988, guid: ce8f5a796c481bc43b321f9d6dbec146, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -844
+      value: -815.9
       objectReference: {fileID: 0}
     - target: {fileID: 8608858106534881988, guid: ce8f5a796c481bc43b321f9d6dbec146, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -277
+      value: -263
       objectReference: {fileID: 0}
     - target: {fileID: 8608858106534881988, guid: ce8f5a796c481bc43b321f9d6dbec146, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4123,7 +4123,7 @@ PrefabInstance:
     - target: {fileID: 8309964742934903215, guid: 4a33a1f217c0d834d9d8784ec7e27507, type: 3}
       propertyPath: level
       value: 
-      objectReference: {fileID: 11400000, guid: ac5601f7893ff25498ba5e20e35f2066, type: 2}
+      objectReference: {fileID: 11400000, guid: 8c7f2d216315d324d84d13db90f3141a, type: 2}
     - target: {fileID: 8309964743105338598, guid: 4a33a1f217c0d834d9d8784ec7e27507, type: 3}
       propertyPath: m_text
       value: Test

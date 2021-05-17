@@ -13,4 +13,10 @@ MonoBehaviour:
   m_Name: NovumRimorSector
   m_EditorClassIdentifier: 
   sectorNameStringTranslation: {fileID: 11400000, guid: bc44cb6beff760e429726139fb031cc3, type: 2}
-  levels: []
+  levels:
+  - {fileID: 11400000, guid: 8c7f2d216315d324d84d13db90f3141a, type: 2}
+  - {fileID: 11400000, guid: 079c2674399504e4484b00a72c5afff7, type: 2}
+  - {fileID: 11400000, guid: 20ec9f8bd6a71b24b960fa9645a5c4f9, type: 2}
+  - {fileID: 11400000, guid: a63c6666058dac145b85ec0672b4bfbe, type: 2}
+  - {fileID: 11400000, guid: 75060fa0c5215094cb6447edd3b001a3, type: 2}
+  - {fileID: 11400000, guid: 661e60f45452e2449afdeeb68e190a08, type: 2}
