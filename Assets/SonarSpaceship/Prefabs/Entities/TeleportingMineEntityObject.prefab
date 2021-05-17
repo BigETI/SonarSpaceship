@@ -1,0 +1,173 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6082789109227270464
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 770161418170903023}
+  - component: {fileID: 3667978426312880348}
+  - component: {fileID: 7159291407895933647}
+  m_Layer: 0
+  m_Name: TeleportingMineEntityObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &770161418170903023
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6082789109227270464}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 837781152088129745}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3667978426312880348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6082789109227270464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9d0033306e5cb845acf09027725aa74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  positions:
+  - {x: 0, y: 0}
+  - {x: 0, y: 6}
+  - {x: 6, y: 6}
+  - {x: 6, y: 0}
+--- !u!114 &7159291407895933647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6082789109227270464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b63c04dec711a04e8d7b021ad84a4f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timing:
+    tickTime: 2
+    elapsedTickTime: 0
+  isRunning: 1
+  useFixedUpdate: 0
+  unscaledTime: 0
+  onTick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3667978426312880348}
+        m_TargetAssemblyTypeName: SonarSpaceship.Controllers.TeleportableEntityControllerScript,
+          SonarSpaceshipAssemblyDefinition
+        m_MethodName: Teleport
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8192193183315875751}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Ping
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!1001 &3798701294139238212
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 770161418170903023}
+    m_Modifications:
+    - target: {fileID: 4546338983252551573, guid: 601b262a9116c4c4a9e7fef1999ba7e6, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4546338983252551573, guid: 601b262a9116c4c4a9e7fef1999ba7e6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4546338983252551573, guid: 601b262a9116c4c4a9e7fef1999ba7e6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4546338983252551573, guid: 601b262a9116c4c4a9e7fef1999ba7e6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4546338983252551573, guid: 601b262a9116c4c4a9e7fef1999ba7e6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4546338983252551573, guid: 601b262a9116c4c4a9e7fef1999ba7e6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4546338983252551573, guid: 601b262a9116c4c4a9e7fef1999ba7e6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4546338983252551573, guid: 601b262a9116c4c4a9e7fef1999ba7e6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4546338983252551573, guid: 601b262a9116c4c4a9e7fef1999ba7e6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4546338983252551573, guid: 601b262a9116c4c4a9e7fef1999ba7e6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4546338983252551573, guid: 601b262a9116c4c4a9e7fef1999ba7e6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4546338983252551574, guid: 601b262a9116c4c4a9e7fef1999ba7e6, type: 3}
+      propertyPath: m_Name
+      value: MineEntityObject
+      objectReference: {fileID: 0}
+    - target: {fileID: 4546338983252551575, guid: 601b262a9116c4c4a9e7fef1999ba7e6, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4546338983252551575, guid: 601b262a9116c4c4a9e7fef1999ba7e6, type: 3}
+      propertyPath: m_InstanceId
+      value: -38244
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 601b262a9116c4c4a9e7fef1999ba7e6, type: 3}
+--- !u!4 &837781152088129745 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4546338983252551573, guid: 601b262a9116c4c4a9e7fef1999ba7e6, type: 3}
+  m_PrefabInstance: {fileID: 3798701294139238212}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &8192193183315875751 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4974004754684784867, guid: 601b262a9116c4c4a9e7fef1999ba7e6, type: 3}
+  m_PrefabInstance: {fileID: 3798701294139238212}
+  m_PrefabAsset: {fileID: 0}

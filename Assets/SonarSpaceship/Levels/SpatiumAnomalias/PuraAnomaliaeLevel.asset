@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: PuraAnomaliaeLevel
   m_EditorClassIdentifier: 
   levelNameStringTranslation: {fileID: 11400000, guid: 0397dee2482d3f141821a77751c2e3fa, type: 2}
-  scenePath: 
+  scenePath: Assets/SonarSpaceship/Scenes/Levels/SpatiumAnomalias/PuraAnomaliaeLevelScene.unity
   requiredLevels:
   - {fileID: 11400000, guid: df882f9aafb9e244caba1e9eb27b956e, type: 2}

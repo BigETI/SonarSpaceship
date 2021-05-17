@@ -1,20 +1,32 @@
 ﻿using UnityEngine;
 
-namespace SonarSpaceship.Triggers
+namespace SonarSpaceship.Controllers
 {
     [RequireComponent(typeof(PolygonCollider2D))]
-    public class WorldConstraintsTriggerScript : MonoBehaviour, IWorldConstraintsTrigger
+    public class WorldConstraintsControllerScript : MonoBehaviour, IWorldConstraintsController
     {
+        private readonly BoxCollider2D[] sideColliders = new BoxCollider2D[4];
+
         [SerializeField]
         private Vector2 worldSize = Vector2.one * 40.0f;
+
+        private Vector2 lastWorldSize;
 
         public Vector2 WorldSize
         {
             get => worldSize;
-            set => worldSize = new Vector2(Mathf.Abs(value.x), Mathf.Abs(value.y));
+            set
+            {
+                lastWorldSize = new Vector2(Mathf.Abs(value.x), Mathf.Abs(value.y));
+                if (worldSize != lastWorldSize)
+                {
+                    worldSize = lastWorldSize;
+                    UpdateColliders();
+                }
+            }
         }
 
-        private bool UpdateColliders()
+        private bool ValidateColliders()
         {
             bool ret = TryGetComponent(out PolygonCollider2D poygon_collider_2d);
             if (ret)
@@ -37,6 +49,50 @@ namespace SonarSpaceship.Triggers
             return ret;
         }
 
+        private void UpdateColliders()
+        {
+            if (ValidateColliders())
+            {
+                Vector2 position = (worldSize + Vector2.one) * 0.5f;
+                Vector2 size = worldSize + (Vector2.one * 2.0f);
+                foreach (BoxCollider2D side_collider in sideColliders)
+                {
+                    if (side_collider)
+                    {
+                        Destroy(side_collider.gameObject);
+                    }
+                }
+                if (InstantiateGameObjectWithBoxCollider2D("TopWorldBorder", out BoxCollider2D box_collider_2d))
+                {
+                    box_collider_2d.transform.localPosition = new Vector2(0.0f, position.y);
+                    box_collider_2d.size = new Vector2(size.x, 1.0f);
+                    sideColliders[0] = box_collider_2d;
+                }
+                if (InstantiateGameObjectWithBoxCollider2D("BottomWorldBorder", out box_collider_2d))
+                {
+                    box_collider_2d.transform.localPosition = new Vector2(0.0f, -position.y);
+                    box_collider_2d.size = new Vector2(size.x, 1.0f);
+                    sideColliders[1] = box_collider_2d;
+                }
+                if (InstantiateGameObjectWithBoxCollider2D("LeftWorldBorder", out box_collider_2d))
+                {
+                    box_collider_2d.transform.localPosition = new Vector2(-position.x, 0.0f);
+                    box_collider_2d.size = new Vector2(1.0f, size.y);
+                    sideColliders[2] = box_collider_2d;
+                }
+                if (InstantiateGameObjectWithBoxCollider2D("RightWorldBorder", out box_collider_2d))
+                {
+                    box_collider_2d.transform.localPosition = new Vector2(position.x, 0.0f);
+                    box_collider_2d.size = new Vector2(1.0f, size.y);
+                    sideColliders[3] = box_collider_2d;
+                }
+            }
+            else
+            {
+                Debug.LogError($"Please attach a \"{ nameof(PolygonCollider2D) }\" component to this game object.");
+            }
+        }
+
         private bool InstantiateGameObjectWithBoxCollider2D(string name, out BoxCollider2D boxCollider2D)
         {
             GameObject game_object = new GameObject(name, typeof(BoxCollider2D));
@@ -44,45 +100,22 @@ namespace SonarSpaceship.Triggers
             return game_object.TryGetComponent(out boxCollider2D);
         }
 
-        private void Start()
-        {
-            if (UpdateColliders())
-            {
-                Vector2 position = (worldSize + Vector2.one) * 0.5f;
-                Vector2 size = worldSize + (Vector2.one * 2.0f);
-                if (InstantiateGameObjectWithBoxCollider2D("TopWorldBorder", out BoxCollider2D box_collider_2d))
-                {
-                    box_collider_2d.transform.localPosition = new Vector2(0.0f, position.y);
-                    box_collider_2d.size = new Vector2(size.x, 1.0f);
-                }
-                if (InstantiateGameObjectWithBoxCollider2D("BottomWorldBorder", out box_collider_2d))
-                {
-                    box_collider_2d.transform.localPosition = new Vector2(0.0f, -position.y);
-                    box_collider_2d.size = new Vector2(size.x, 1.0f);
-                }
-                if (InstantiateGameObjectWithBoxCollider2D("LeftWorldBorder", out box_collider_2d))
-                {
-                    box_collider_2d.transform.localPosition = new Vector2(-position.x, 0.0f);
-                    box_collider_2d.size = new Vector2(1.0f, size.y);
-                }
-                if (InstantiateGameObjectWithBoxCollider2D("RightWorldBorder", out box_collider_2d))
-                {
-                    box_collider_2d.transform.localPosition = new Vector2(position.x, 0.0f);
-                    box_collider_2d.size = new Vector2(1.0f, size.y);
-                }
-            }
-            else
-            {
-                Debug.LogError($"Please attach a \"{ nameof(PolygonCollider2D) }\" component to this game object.");
-            }
-            Destroy(this);
-        }
+        private void Start() => UpdateColliders();
 
 #if UNITY_EDITOR
+        private void Update()
+        {
+            if (lastWorldSize != worldSize)
+            {
+                lastWorldSize = worldSize;
+                UpdateColliders();
+            }
+        }
+
         private void OnValidate()
         {
             worldSize = new Vector2(Mathf.Abs(worldSize.x), Mathf.Abs(worldSize.y));
-            UpdateColliders();
+            ValidateColliders();
         }
 
         private void OnDrawGizmos()

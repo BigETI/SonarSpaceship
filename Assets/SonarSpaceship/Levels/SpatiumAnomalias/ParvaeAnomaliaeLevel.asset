@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: ParvaeAnomaliaeLevel
   m_EditorClassIdentifier: 
   levelNameStringTranslation: {fileID: 11400000, guid: 864de47944a88354ebe4b90d92620c22, type: 2}
-  scenePath: 
+  scenePath: Assets/SonarSpaceship/Scenes/Levels/SpatiumAnomalias/ParvaeAnomaliaeLevelScene.unity
   requiredLevels:
   - {fileID: 11400000, guid: d6113232419ada84784f631e50e2fbd3, type: 2}

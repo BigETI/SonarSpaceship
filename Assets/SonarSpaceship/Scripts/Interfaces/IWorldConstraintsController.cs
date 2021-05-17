@@ -2,7 +2,7 @@
 
 namespace SonarSpaceship
 {
-    public interface IWorldConstraintsTrigger : IBehaviour
+    public interface IWorldConstraintsController : IBehaviour
     {
         Vector2 WorldSize { get; set; }
     }
