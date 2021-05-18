@@ -43,6 +43,9 @@ namespace SonarSpaceship.Controllers
         private float emssAngle = 40.0f;
 
         [SerializeField]
+        private float maximalEMSSCooldownTime = 1.0f;
+
+        [SerializeField]
         private float maximalAttachmentCooldownTime = 1.0f;
 
         [SerializeField]
@@ -122,16 +125,22 @@ namespace SonarSpaceship.Controllers
             set => emssAngle = Mathf.Repeat(value, 360.0f - float.Epsilon);
         }
 
-        public Vector2 Movement
+        public float MaximalEMSSCooldownTime
         {
-            get => movement;
-            set => movement = (value.sqrMagnitude < 1.0f) ? value : value.normalized;
+            get => maximalEMSSCooldownTime;
+            set => maximalEMSSCooldownTime = Mathf.Max(value, 0.0f);
         }
 
         public float MaximalAttachmentCooldownTime
         {
             get => maximalAttachmentCooldownTime;
             set => maximalAttachmentCooldownTime = Mathf.Max(value, 0.0f);
+        }
+
+        public Vector2 Movement
+        {
+            get => movement;
+            set => movement = (value.sqrMagnitude < 1.0f) ? value : value.normalized;
         }
 
         public Vector2 LookAt
@@ -168,9 +177,11 @@ namespace SonarSpaceship.Controllers
 
         public float ActualWeight => weight + (AttachedContainerController ? AttachedContainerController.Weight : 0.0f);
 
-        public IReadOnlyCollection<RefillStationControllerScript> DockedRefillStationControllerss => dockedRefillStationControllers.Values;
+        public IReadOnlyCollection<RefillStationControllerScript> DockedRefillStationControllers => dockedRefillStationControllers.Values;
 
         public ContainerControllerScript AttachedContainerController { get; private set; }
+
+        public float EMSSCooldownTime { get; private set; }
 
         public float AttachmentCooldownTime { get; private set; }
 
@@ -190,23 +201,27 @@ namespace SonarSpaceship.Controllers
 
         public void Ping()
         {
-            if (IsAlive)
+            if (IsAlive && (EMSSCooldownTime <= 0.0f))
             {
                 PingableControllerScript[] pingable_controllers = FindObjectsOfType<PingableControllerScript>();
                 Vector3 world_position = transform.position;
                 Vector2 position = new Vector2(world_position.x, world_position.y);
                 foreach (PingableControllerScript pingable_controller in pingable_controllers)
                 {
-                    Vector3 pingable_controller_world_position = pingable_controller.transform.position;
-                    if ((new Vector2(pingable_controller_world_position.x, pingable_controller_world_position.y) - position).sqrMagnitude > float.Epsilon)
+                    if (!GameObjectUtilities.IsGameObjectChildOfGameObject(pingable_controller, this))
                     {
-                        pings.Add(new Ping(pingable_controller, this, position, lookingAt, emssSpeed, emssDistance, emssAngle));
-                    }
-                    else
-                    {
-                        pingable_controller.ReceivePing(this);
+                        Vector3 pingable_controller_world_position = pingable_controller.transform.position;
+                        if ((new Vector2(pingable_controller_world_position.x, pingable_controller_world_position.y) - position).sqrMagnitude > float.Epsilon)
+                        {
+                            pings.Add(new Ping(pingable_controller, this, position, lookingAt, emssSpeed, emssDistance, emssAngle));
+                        }
+                        else
+                        {
+                            pingable_controller.ReceivePing(this);
+                        }
                     }
                 }
+                EMSSCooldownTime = maximalEMSSCooldownTime;
                 if (onPinged != null)
                 {
                     onPinged.Invoke();
@@ -248,6 +263,7 @@ namespace SonarSpaceship.Controllers
 
         public void ShowLevelSelectionMenu() => SceneLoaderManager.LoadScenes("LevelSelectionMenuScene");
 
+#if UNITY_EDITOR
         private void OnValidate()
         {
             lookAtSmoothing = Mathf.Clamp(lookAtSmoothing, 0.0f, 1.0f);
@@ -259,8 +275,10 @@ namespace SonarSpaceship.Controllers
             emssSpeed = Mathf.Max(emssSpeed, 0.0f);
             emssDistance = Mathf.Max(emssDistance, 0.0f);
             emssAngle = Mathf.Repeat(emssAngle, 360.0f - float.Epsilon);
+            maximalEMSSCooldownTime = Mathf.Max(maximalEMSSCooldownTime, 0.0f);
             maximalAttachmentCooldownTime = Mathf.Max(maximalAttachmentCooldownTime, 0.0f);
         }
+#endif
 
         private void Start()
         {
@@ -368,6 +386,10 @@ namespace SonarSpaceship.Controllers
                     {
                         pings.RemoveAt(ping_index);
                     }
+                }
+                if (EMSSCooldownTime > 0.0f)
+                {
+                    EMSSCooldownTime = Mathf.Max(EMSSCooldownTime - Time.deltaTime, 0.0f);
                 }
                 if (AttachmentCooldownTime > 0.0f)
                 {

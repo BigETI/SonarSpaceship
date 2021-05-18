@@ -10,6 +10,8 @@ namespace SonarSpaceship
 
         EPauseMenuState PauseMenuState { get; set; }
 
+        event GamePausedDelegate OnGamePaused;
+
         event GameResumedDelegate OnGameResumed;
 
         event PauseMenuShownDelegate OnPauseMenuShown;

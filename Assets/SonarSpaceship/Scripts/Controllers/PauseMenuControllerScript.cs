@@ -16,6 +16,9 @@ namespace SonarSpaceship.Controllers
         private StringTranslationObjectScript exitGameMessageStringTranslation = default;
 
         [SerializeField]
+        private UnityEvent onGamePaused = default;
+
+        [SerializeField]
         private UnityEvent onGameResumed = default;
 
         [SerializeField]
@@ -47,6 +50,7 @@ namespace SonarSpaceship.Controllers
             {
                 if (pauseMenuState != value)
                 {
+                    EPauseMenuState old_pause_menu_state = pauseMenuState;
                     pauseMenuState = value;
                     switch (pauseMenuState)
                     {
@@ -60,6 +64,14 @@ namespace SonarSpaceship.Controllers
                             break;
                         case EPauseMenuState.PauseMenu:
                             Time.timeScale = 0.0f;
+                            if (old_pause_menu_state == EPauseMenuState.None)
+                            {
+                                if (onGamePaused != null)
+                                {
+                                    onGamePaused.Invoke();
+                                }
+                                OnGamePaused?.Invoke();
+                            }
                             if (onPauseMenuShown != null)
                             {
                                 onPauseMenuShown.Invoke();
@@ -78,6 +90,8 @@ namespace SonarSpaceship.Controllers
                 }
             }
         }
+
+        public event GamePausedDelegate OnGamePaused;
 
         public event GameResumedDelegate OnGameResumed;
 

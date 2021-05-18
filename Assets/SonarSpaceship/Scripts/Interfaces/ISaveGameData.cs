@@ -5,6 +5,8 @@ namespace SonarSpaceship
 {
     public interface ISaveGameData
     {
+        bool IsMuted { get; set; }
+
         IReadOnlyList<ProfileData> Profiles { get; }
 
         bool IsProfileAvailable(byte profileIndex);
