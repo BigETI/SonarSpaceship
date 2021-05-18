@@ -233,7 +233,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 20ec9f8bd6a71b24b960fa9645a5c4f9, type: 2}
     - target: {fileID: 7226437828778471068, guid: ce8f5a796c481bc43b321f9d6dbec146, type: 3}
       propertyPath: m_text
-      value: Test
+      value: Novum Rimor (III)
       objectReference: {fileID: 0}
     - target: {fileID: 8608858106534881988, guid: ce8f5a796c481bc43b321f9d6dbec146, type: 3}
       propertyPath: m_Pivot.x
@@ -420,6 +420,7 @@ GameObject:
   - component: {fileID: 387765219}
   - component: {fileID: 387765218}
   - component: {fileID: 387765217}
+  - component: {fileID: 387765220}
   m_Layer: 0
   m_Name: BackButton
   m_TagString: Untagged
@@ -503,6 +504,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 387765220}
+        m_TargetAssemblyTypeName: SonarSpaceship.Controllers.SoundEffectPlayerControllerScript,
+          SonarSpaceshipAssemblyDefinition
+        m_MethodName: Play
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: e71dd2f4f6b32e64ab556fe12eb3cc50, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &387765218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -541,6 +555,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 387765215}
   m_CullTransparentMesh: 1
+--- !u!114 &387765220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 387765215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6127e7167b27304899fbe62df9f0833, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &400313683
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1616,7 +1642,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 75060fa0c5215094cb6447edd3b001a3, type: 2}
     - target: {fileID: 7226437828778471068, guid: ce8f5a796c481bc43b321f9d6dbec146, type: 3}
       propertyPath: m_text
-      value: Test
+      value: Novum Rimor (V)
       objectReference: {fileID: 0}
     - target: {fileID: 8608858106534881988, guid: ce8f5a796c481bc43b321f9d6dbec146, type: 3}
       propertyPath: m_Pivot.x
@@ -2859,6 +2885,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1360131025}
   m_CullTransparentMesh: 1
+--- !u!1001 &1396050959
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6982238466625555072, guid: d44ed48a00b33474198311eed359529c, type: 3}
+      propertyPath: m_Name
+      value: AudioManagerObject
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982238466625555102, guid: d44ed48a00b33474198311eed359529c, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982238466625555102, guid: d44ed48a00b33474198311eed359529c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982238466625555102, guid: d44ed48a00b33474198311eed359529c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982238466625555102, guid: d44ed48a00b33474198311eed359529c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982238466625555102, guid: d44ed48a00b33474198311eed359529c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982238466625555102, guid: d44ed48a00b33474198311eed359529c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982238466625555102, guid: d44ed48a00b33474198311eed359529c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982238466625555102, guid: d44ed48a00b33474198311eed359529c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982238466625555102, guid: d44ed48a00b33474198311eed359529c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982238466625555102, guid: d44ed48a00b33474198311eed359529c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982238466625555102, guid: d44ed48a00b33474198311eed359529c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d44ed48a00b33474198311eed359529c, type: 3}
 --- !u!1001 &1416606521
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2958,7 +3041,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: a63c6666058dac145b85ec0672b4bfbe, type: 2}
     - target: {fileID: 7226437828778471068, guid: ce8f5a796c481bc43b321f9d6dbec146, type: 3}
       propertyPath: m_text
-      value: Test
+      value: Novum Rimor (IV)
       objectReference: {fileID: 0}
     - target: {fileID: 8608858106534881988, guid: ce8f5a796c481bc43b321f9d6dbec146, type: 3}
       propertyPath: m_Pivot.x
@@ -3153,7 +3236,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 661e60f45452e2449afdeeb68e190a08, type: 2}
     - target: {fileID: 7226437828778471068, guid: ce8f5a796c481bc43b321f9d6dbec146, type: 3}
       propertyPath: m_text
-      value: Test
+      value: Novum Rimor (VI)
       objectReference: {fileID: 0}
     - target: {fileID: 8608858106534881988, guid: ce8f5a796c481bc43b321f9d6dbec146, type: 3}
       propertyPath: m_Pivot.x
@@ -3948,7 +4031,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 079c2674399504e4484b00a72c5afff7, type: 2}
     - target: {fileID: 7226437828778471068, guid: ce8f5a796c481bc43b321f9d6dbec146, type: 3}
       propertyPath: m_text
-      value: Test
+      value: Novum Rimor (II)
       objectReference: {fileID: 0}
     - target: {fileID: 8608858106534881988, guid: ce8f5a796c481bc43b321f9d6dbec146, type: 3}
       propertyPath: m_Pivot.x
@@ -4126,7 +4209,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 8c7f2d216315d324d84d13db90f3141a, type: 2}
     - target: {fileID: 8309964743105338598, guid: 4a33a1f217c0d834d9d8784ec7e27507, type: 3}
       propertyPath: m_text
-      value: Test
+      value: Novum Rimor (I)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a33a1f217c0d834d9d8784ec7e27507, type: 3}

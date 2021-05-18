@@ -24,6 +24,8 @@ namespace SonarSpaceship
 
         float EMSSAngle { get; set; }
 
+        float MaximalEMSSCooldownTime { get; set; }
+
         float MaximalAttachmentCooldownTime { get; set; }
 
         Vector2 Movement { get; set; }
@@ -36,9 +38,11 @@ namespace SonarSpaceship
 
         float ActualWeight { get; }
 
-        IReadOnlyCollection<RefillStationControllerScript> DockedRefillStationControllerss { get; }
+        IReadOnlyCollection<RefillStationControllerScript> DockedRefillStationControllers { get; }
 
         ContainerControllerScript AttachedContainerController { get; }
+
+        float EMSSCooldownTime { get; }
 
         float AttachmentCooldownTime { get; }
 

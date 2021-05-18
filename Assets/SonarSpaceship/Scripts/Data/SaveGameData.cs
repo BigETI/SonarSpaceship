@@ -9,7 +9,16 @@ namespace SonarSpaceship.Data
     internal class SaveGameData : ASaveGameData, ISaveGameData
     {
         [SerializeField]
+        private bool isMuted;
+
+        [SerializeField]
         private ProfileData[] profiles = Array.Empty<ProfileData>();
+
+        public bool IsMuted
+        {
+            get => isMuted;
+            set => isMuted = value;
+        }
 
         public IReadOnlyList<ProfileData> Profiles => profiles ?? Array.Empty<ProfileData>();
 
@@ -22,6 +31,7 @@ namespace SonarSpaceship.Data
         {
             if (saveGameData is SaveGameData save_game_data)
             {
+                isMuted = save_game_data.isMuted;
                 if (save_game_data.profiles != null)
                 {
                     profiles = new ProfileData[save_game_data.profiles.Length];
