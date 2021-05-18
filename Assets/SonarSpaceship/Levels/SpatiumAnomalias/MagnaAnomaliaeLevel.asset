@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: MagnaAnomaliaeLevel
   m_EditorClassIdentifier: 
   levelNameStringTranslation: {fileID: 11400000, guid: 039c9689b5b39244f9625bfe5ea6f7fd, type: 2}
-  scenePath: 
+  scenePath: Assets/SonarSpaceship/Scenes/Levels/SpatiumAnomalias/MagnaAnomaliaeLevelScene.unity
   requiredLevels:
   - {fileID: 11400000, guid: c81699120bf0adb48846f04602d7f095, type: 2}
