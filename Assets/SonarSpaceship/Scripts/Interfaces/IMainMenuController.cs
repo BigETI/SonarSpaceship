@@ -12,11 +12,23 @@ namespace SonarSpaceship
 
         event TapToContinueShownDelegate OnTapToContinueShown;
 
+        event TapToContinueHiddenDelegate OnTapToContinueHidden;
+
         event MainMenuShownDelegate OnMainMenuShown;
+
+        event MainMenuHiddenDelegate OnMainMenuHidden;
 
         event ProfileMenuShownDelegate OnProfileMenuShown;
 
+        event ProfileMenuHiddenDelegate OnProfileMenuHidden;
+
         event SettingsMenuShownDelegate OnSettingsMenuShown;
+
+        event SettingsMenuHiddenDelegate OnSettingsMenuHidden;
+
+        event CreditsMenuShownDelegate OnCreditsMenuShown;
+
+        event CreditsMenuHiddenDelegate OnCreditsMenuHidden;
 
         event ExitGameRequestAcceptedDelegate OnExitGameRequestAccepted;
 

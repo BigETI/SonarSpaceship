@@ -20,16 +20,31 @@ namespace SonarSpaceship.Controllers
         private UnityEvent onTapToContinueShown = default;
 
         [SerializeField]
+        private UnityEvent onTapToContinueHidden = default;
+
+        [SerializeField]
         private UnityEvent onMainMenuShown = default;
+
+        [SerializeField]
+        private UnityEvent onMainMenuHidden = default;
 
         [SerializeField]
         private UnityEvent onProfileMenuShown = default;
 
         [SerializeField]
+        private UnityEvent onProfileMenuHidden = default;
+
+        [SerializeField]
         private UnityEvent onSettingsMenuShown = default;
 
         [SerializeField]
+        private UnityEvent onSettingsMenuHidden = default;
+
+        [SerializeField]
         private UnityEvent onCreditsMenuShown = default;
+
+        [SerializeField]
+        private UnityEvent onCreditsMenuHidden = default;
 
         [SerializeField]
         private UnityEvent onExitGameRequestAccepted = default;
@@ -60,7 +75,46 @@ namespace SonarSpaceship.Controllers
             {
                 if ((mainMenuState != value) && (value != EMainMenuState.Nothing))
                 {
+                    EMainMenuState old_main_menu_state = mainMenuState;
                     mainMenuState = value;
+                    switch (old_main_menu_state)
+                    {
+                        case EMainMenuState.TapToContinue:
+                            if (onTapToContinueHidden != null)
+                            {
+                                onTapToContinueHidden.Invoke();
+                            }
+                            OnTapToContinueHidden?.Invoke();
+                            break;
+                        case EMainMenuState.MainMenu:
+                            if (onMainMenuHidden != null)
+                            {
+                                onMainMenuHidden.Invoke();
+                            }
+                            OnMainMenuHidden?.Invoke();
+                            break;
+                        case EMainMenuState.ProfileMenu:
+                            if (onProfileMenuHidden != null)
+                            {
+                                onProfileMenuHidden.Invoke();
+                            }
+                            OnProfileMenuHidden?.Invoke();
+                            break;
+                        case EMainMenuState.SettingsMenu:
+                            if (onSettingsMenuHidden != null)
+                            {
+                                onSettingsMenuHidden.Invoke();
+                            }
+                            OnSettingsMenuHidden?.Invoke();
+                            break;
+                        case EMainMenuState.CreditsMenu:
+                            if (onCreditsMenuHidden != null)
+                            {
+                                onCreditsMenuHidden.Invoke();
+                            }
+                            OnCreditsMenuHidden?.Invoke();
+                            break;
+                    }
                     switch (mainMenuState)
                     {
                         case EMainMenuState.TapToContinue:
@@ -105,13 +159,23 @@ namespace SonarSpaceship.Controllers
 
         public event TapToContinueShownDelegate OnTapToContinueShown;
 
+        public event TapToContinueHiddenDelegate OnTapToContinueHidden;
+
         public event MainMenuShownDelegate OnMainMenuShown;
+
+        public event MainMenuHiddenDelegate OnMainMenuHidden;
 
         public event ProfileMenuShownDelegate OnProfileMenuShown;
 
+        public event ProfileMenuHiddenDelegate OnProfileMenuHidden;
+
         public event SettingsMenuShownDelegate OnSettingsMenuShown;
 
+        public event SettingsMenuHiddenDelegate OnSettingsMenuHidden;
+
         public event CreditsMenuShownDelegate OnCreditsMenuShown;
+
+        public event CreditsMenuHiddenDelegate OnCreditsMenuHidden;
 
         public event ExitGameRequestAcceptedDelegate OnExitGameRequestAccepted;
 

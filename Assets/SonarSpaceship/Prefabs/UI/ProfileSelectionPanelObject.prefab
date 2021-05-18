@@ -386,7 +386,20 @@ MonoBehaviour:
   nameText: {fileID: 5886535385608619498}
   onProfileNameRequested:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7236348347866750544}
+        m_TargetAssemblyTypeName: SonarSpaceship.Controllers.SoundEffectPlayerControllerScript,
+          SonarSpaceshipAssemblyDefinition
+        m_MethodName: Play
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 72fe8b78942fd854b85a4c9321dcf42c, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onProfileSelected:
     m_PersistentCalls:
       m_Calls:
@@ -408,20 +421,7 @@ MonoBehaviour:
       m_Calls: []
   onProfileDeleted:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7236348347866750544}
-        m_TargetAssemblyTypeName: SonarSpaceship.Controllers.SoundEffectPlayerControllerScript,
-          SonarSpaceshipAssemblyDefinition
-        m_MethodName: Play
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: b1f3ca1fe05776a419f083713a6ae3d5, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &7236348347866750544
 MonoBehaviour:
   m_ObjectHideFlags: 0
