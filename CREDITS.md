@@ -1,4 +1,3 @@
-
 # Credits
 
 ## Eric Rudolf Daniels
@@ -7,6 +6,8 @@
 
 ## Ethem Kurt
 
+- Animations
+- Art assets implementation
 - Audio creation and implementation
 - Direction
 - Programming
