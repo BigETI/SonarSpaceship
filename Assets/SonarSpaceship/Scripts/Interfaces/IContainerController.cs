@@ -1,6 +1,6 @@
 ﻿namespace SonarSpaceship
 {
-    public interface IContainerController : IBehaviour
+    public interface IContainerController : IControllersController
     {
         float Weight { get; set; }
 

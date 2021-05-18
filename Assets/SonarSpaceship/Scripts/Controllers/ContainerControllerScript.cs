@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 namespace SonarSpaceship.Controllers
 {
-    public class ContainerControllerScript : MonoBehaviour, IContainerController
+    public class ContainerControllerScript : AControllersControllerScript<ContainerControllerScript>, IContainerController
     {
         [SerializeField]
         private float weight = 1.0f;

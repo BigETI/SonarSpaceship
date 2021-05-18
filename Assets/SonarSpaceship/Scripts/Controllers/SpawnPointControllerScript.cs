@@ -60,7 +60,7 @@ namespace SonarSpaceship.Controllers
                 onContainerDelivered.Invoke();
             }
             OnContainerDelivered?.Invoke(containerController);
-            if (FindObjectsOfType<ContainerControllerScript>().Length <= 1)
+            if (ContainerControllerScript.EnabledControllerCount <= 1)
             {
                 GameManager.FinishCurrentLevel();
                 if (onLevelFinished != null)

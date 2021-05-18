@@ -13,6 +13,10 @@ namespace SonarSpaceship.Controllers
 
         public static IEnumerable<T> EnabledControllers => enabledControllers;
 
+        public static uint ControllerCount => (uint)controllers.Count;
+
+        public static uint EnabledControllerCount => (uint)enabledControllers.Count;
+
         protected virtual void Awake() => controllers.Add((T)this);
 
         protected virtual void OnDestroy() => controllers.Remove((T)this);
