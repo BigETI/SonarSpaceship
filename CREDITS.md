@@ -17,6 +17,7 @@
 ## Gökdeniz Çetin
 
 - 2D art assets
+- UI/UX design
 
 ---
 
